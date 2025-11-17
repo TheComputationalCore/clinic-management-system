@@ -62,23 +62,7 @@ Registration
 Logout  
 ![Logout](screenshots/logout.png)
 
-User Profile  
-![User Profile](screenshots/user profile.png)
-
-Medication List  
-![Medication List](screenshots/medication list.png)
-
-Adding Medication  
-![Adding Medication](screenshots/adding medication.png)
-
-Booking an Appointment  
-![Booking an Appointment](screenshots/booking an appointment.png)
-
-Appointment Booked Successfully  
-![Appointment Booked Successfully](screenshots/appointment booked successfully.png)
-
 ---
-
 
 
 # 🧩 Tech Stack
