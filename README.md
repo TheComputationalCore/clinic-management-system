@@ -127,7 +127,7 @@ API requests used during development are illustrated with screenshots in `/scree
 ![Postman - Add Medication](./screenshots/postman_request_add_medication.png)
 ![Postman - Appointments Response](./screenshots/postman_response_appointments.png)
 
-> If your Postman screenshot filenames are different, rename the files in the `/screenshots` folder to the exact names above or update these image paths accordingly.
+
 
 ---
 
@@ -185,7 +185,5 @@ MIT License — see `LICENSE` file.
 
 ---
 
-**Notes & next steps**
-1. Double-check actual screenshot filenames in your `screenshots/` folder.  
-2. If any filenames differ, either rename the files to match the paths used above, or tell me the exact filenames and I will regenerate the README accordingly.
+
 
