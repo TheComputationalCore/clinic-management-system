@@ -157,6 +157,3 @@ See `LICENSE` for details.
 
 ---
 
-## ⭐ Support the Project
-
-If you find this useful, consider giving the repo a **star** ⭐ — it helps a lot!
