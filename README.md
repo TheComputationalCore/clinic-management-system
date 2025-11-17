@@ -4,92 +4,110 @@
 ![Stars](https://img.shields.io/github/stars/TheComputationalCore/patient-system)
 ![Forks](https://img.shields.io/github/forks/TheComputationalCore/patient-system)
 ![Issues](https://img.shields.io/github/issues/TheComputationalCore/patient-system)
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)
 
-A modern **Patient Management System** built with **Spring Boot**, **Spring Security**, **Thymeleaf**, and **Spring Data JPA**.  
-Designed for clinics and healthcare teams to efficiently manage **patients, appointments, medications, and medical profiles** with a secure, clean, and user-friendly interface.
+A modern, secure **Patient Management System** built with **Spring Boot**, **Spring Security**, **Thymeleaf**, and **Spring Data JPA**.  
+Designed for clinics and medical teams to manage **patients, appointments, medications, user accounts**, and database operations efficiently.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-### 👤 User Accounts & Security
-- User registration & login  
-- Password hashing with BCrypt  
-- Session-based authentication (Spring Security)
+## 🔐 Authentication & Security
+- Secure login & registration  
+- BCrypt password hashing  
+- Spring Security authentication flow  
 
-### 🏥 Patient Management
-- Create, update, delete patient profiles  
+## 🏥 Patient Management
+- Add, edit, update, delete patients  
+- View complete patient profiles  
 - Medical information & history tracking  
-- Easy patient search
 
-### 📅 Appointment Handling
-- Book, edit, cancel appointments  
-- View appointment history
+## 📅 Appointment System
+- Book appointments  
+- Appointment confirmation screen  
+- List all appointments  
+- Postman-tested REST endpoints  
 
-### 💊 Medication Tracking
-- Add and manage medications  
-- View prescription details
+## 💊 Medication Tracking
+- Add medications  
+- Medication list page  
+- Medication linked with patient  
 
-### 🖥️ Modern UI (Thymeleaf + Bootstrap)
-- Clean responsive design  
-- Intuitive navigation  
+## 🖥 UI & Frontend
+- Thymeleaf server-rendered UI  
+- Bootstrap 5 responsive layout  
+- Clean, simple navigation  
+- User profile dashboard  
 
-### 🛢️ Database Support
-- **H2 (in-memory)** — ideal for development  
+## 🛢 Database Support
+Supports multiple databases out of the box:
+- **H2 (memory mode)**  
 - **MySQL**  
-- **PostgreSQL**
+- **PostgreSQL**  
 
-### 🐳 Docker Friendly
-- Build and run using Docker  
-- `.env` support for DB credentials  
+## 🐳 Docker Support
+- Pre-built Dockerfile  
+- Environment variable support  
+- Optional Docker Compose (included below)
 
 ---
 
 # 📸 Screenshots
 
-All screenshots referenced below are stored inside the repository at **`/screenshots/`**.
+_All screenshots are stored under `/screenshots/`._
 
-### 🏠 Main UI Screens
-Dashboard  
+## 🏠 UI Screens
+
+### Dashboard  
 ![Dashboard](screenshots/dashboard.png)
 
-Homepage  
+### Homepage  
 ![Homepage](screenshots/homepage.png)
 
-Registration  
+### User Registration  
 ![Registration](screenshots/registration.png)
 
-Logout  
+### Logout  
 ![Logout](screenshots/logout.png)
 
 ---
 
+# 🧩 Architecture Overview
 
-# 🧩 Tech Stack
-
-| Layer | Technology |
-|-------|------------|
-| Backend | Spring Boot, Spring MVC, Spring Data JPA |
-| Frontend | Thymeleaf, Bootstrap 5 |
-| Security | Spring Security, BCrypt |
-| Database | H2, MySQL, PostgreSQL |
-| Build Tool | Maven |
-| Containerization | Docker |
+```
+Patient System (Spring Boot App)
+│
+├── Authentication Layer
+│     └── Spring Security, BCrypt
+│
+├── MVC Layer
+│     ├── Controllers (Handle requests)
+│     ├── Services    (Business logic)
+│     ├── Repositories (Database access)
+│     └── Models (Entities)
+│
+├── Thymeleaf UI Layer
+│     └── HTML templates + Bootstrap 5
+│
+└── Database Layer
+      └── H2 / MySQL / PostgreSQL
+```
 
 ---
 
-# 📁 Project Structure
+# 🛠 Project Structure
 
 ```
 patient-system/
-├── src/
-│   ├── main/java/.../controller
-│   ├── main/java/.../service
-│   ├── main/java/.../repository
-│   ├── main/java/.../model
-│   └── main/resources/
-│       ├── templates/
-│       └── static/
+├── src/main/java/.../controller
+├── src/main/java/.../service
+├── src/main/java/.../repository
+├── src/main/java/.../model
+├── src/main/resources/
+│   ├── templates/
+│   └── static/
 ├── screenshots/
 ├── Dockerfile
 └── README.md
@@ -97,75 +115,50 @@ patient-system/
 
 ---
 
-# 🚀 Quick Start
+# 🚀 Quick Start (Local Development)
 
-## ✅ Prerequisites
-- Java **17+**
-- Maven **3.6+**
-- (Optional) Docker
-
----
-
-## 1️⃣ Clone the Repository
-
+## 1️⃣ Clone the Repo
 ```bash
 git clone https://github.com/TheComputationalCore/patient-system.git
 cd patient-system
 ```
 
----
-
-## 2️⃣ Build the Application
-
+## 2️⃣ Build
 ```bash
 ./mvnw clean package
 ```
 
----
-
-## 3️⃣ Run with H2 (Recommended)
-
-Edit:
-
-```
-src/main/resources/application.properties
-```
-
-Add (example):
+## 3️⃣ Run with H2 (recommended for dev)
+Update `application.properties`:
 
 ```
 server.port=8085
-
 spring.datasource.url=jdbc:h2:mem:patient_system
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=
-
 spring.jpa.hibernate.ddl-auto=update
-
 spring.h2.console.enabled=true
 spring.h2.console.path=/h2-console
-
 spring.thymeleaf.cache=false
 ```
 
-Run the app:
+Run:
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Open in your browser:
+Open in browser:
 
-- http://localhost:8085  
-- H2 console: http://localhost:8085/h2-console
+- App → http://localhost:8085  
+- H2 Console → http://localhost:8085/h2-console  
 
 ---
 
-# 🗄️ Database Configuration Examples
+# 🗄 Database Configuration
 
-## MySQL
-
+## 🐬 MySQL
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/patient_system
 spring.datasource.username=root
@@ -173,8 +166,7 @@ spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-## PostgreSQL
-
+## 🐘 PostgreSQL
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/patient_system
 spring.datasource.username=postgres
@@ -184,33 +176,79 @@ spring.jpa.hibernate.ddl-auto=update
 
 ---
 
-# 🐳 Docker Support
+# 🐳 Docker Setup
 
-### Build Image
-
+## Build Docker Image
 ```bash
 docker build -t patient-system:latest .
 ```
 
-### Run Container
-
+## Run Container
 ```bash
 docker run -p 8085:8085 --env-file .env patient-system:latest
 ```
 
-Add database credentials to `.env`:
+### Example `.env` file:
 
 ```
-DB_URL=jdbc:mysql://...
-DB_USERNAME=...
-DB_PASSWORD=...
+DB_URL=jdbc:mysql://localhost:3306/patient_system
+DB_USERNAME=root
+DB_PASSWORD=password
 ```
+
+---
+
+# 🐳 Docker Compose (Optional)
+
+```yaml
+version: "3.9"
+services:
+  db:
+    image: mysql:8
+    container_name: patient_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: patient_system
+    ports:
+      - "3306:3306"
+
+  app:
+    build: .
+    container_name: patient_app
+    depends_on:
+      - db
+    ports:
+      - "8085:8085"
+    environment:
+      DB_URL: jdbc:mysql://db:3306/patient_system
+      DB_USERNAME: root
+      DB_PASSWORD: root
+```
+
+Run:
+```bash
+docker compose up --build
+```
+
+---
+
+# 📘 API Documentation (Basic)
+
+| Method | Endpoint | Description |
+|--------|----------|--------------|
+| GET | `/` | Home |
+| GET | `/register` | Registration page |
+| POST | `/register` | Register new user |
+| POST | `/login` | Login user |
+| POST | `/logout` | Logout user |
+| GET | `/appointments` | Get all appointments |
+| POST | `/appointments/book` | Book appointment |
 
 ---
 
 # 🧪 Running Tests
 
-```bash
+```
 ./mvnw test
 ```
 
@@ -218,17 +256,30 @@ DB_PASSWORD=...
 
 # 🤝 Contributing
 
-Contributions are welcome! Please read `CONTRIBUTING.md` for details on reporting issues, coding style, and opening pull requests.
+See: **CONTRIBUTING.md**
+
+---
+
+# 🔐 Security Policy
+
+See: **SECURITY.md**
 
 ---
 
 # 📜 License
 
-This project is licensed under the **MIT License**. See `LICENSE` for details.
+This project is licensed under the **MIT License**.
 
 ---
 
-# 📬 Contact
+# 🏁 Release Notes
+
+The latest stable version:  
+➡ `v1.0.0 – Initial Stable Release`
+
+---
+
+# 👤 Author
 
 **Dinesh Chandra — TheComputationalCore**  
 GitHub: https://github.com/TheComputationalCore  
