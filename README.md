@@ -1,31 +1,52 @@
 
-# Patient System
+# 🏥 Patient Management System
 
-A complete Patient Management System built with **Spring Boot**, **Spring Data JPA**, **Spring Security**, **Thymeleaf**, and **MySQL**.  
-Includes user registration/login, appointments, medications, and a responsive dashboard.
+A modern full‑stack **Spring Boot + Thymeleaf + MySQL** web application for patient registration, login, appointments, medications, and profile management — now presented with a clean UI and proper authentication using Spring Security.
+
+This project is perfect for showcasing **backend engineering**, **full‑stack development**, and **secure application design** in your portfolio.
 
 ---
 
 ## 🚀 Features
 
-- ✔️ Patient Registration & Login (Spring Security)
-- ✔️ Appointment Booking & Management  
-- ✔️ Medication Tracking  
-- ✔️ User Profile  
-- ✔️ Spring Boot MVC + Service + Repository Architecture  
-- ✔️ MySQL Database using JPA/Hibernate  
-- ✔️ Thymeleaf Frontend Templates  
+### 🔐 User Management
+- Patient Registration  
+- Secure Login (Spring Security + BCrypt)  
+- Personalized Dashboard  
+
+### 🗓️ Appointments
+- View Appointments  
+- Book New Appointments  
+- Confirmation & Flash Messages  
+
+### 💊 Medications
+- Add Medication  
+- Delete Medication  
+- Personalized list for each patient  
+
+### 👨‍⚕️ Doctors Module
+- View Doctors list  
+- Appointment‑doctor linking  
+
+### 🧩 Architecture
+- Spring Boot 3  
+- JPA / Hibernate  
+- Thymeleaf with Bootstrap  
+- MVC layered structure  
+- MySQL secure connection  
+- CSRF‑protected forms  
 
 ---
 
-## 🧩 Tech Stack
+## 🧬 Tech Stack
 
-| Layer      | Technology |
-|-----------|------------|
-| Backend   | Spring Boot 3, Spring Security, Spring Data JPA |
-| Frontend  | Thymeleaf, Bootstrap |
-| Database  | MySQL |
-| Build Tool | Maven |
+| Layer        | Technology |
+|--------------|------------|
+| Backend      | Spring Boot 3, Spring Security, Spring Data JPA |
+| Frontend     | Thymeleaf, HTML5, CSS3, Bootstrap |
+| Database     | MySQL |
+| Tools        | Maven, Postman, GitHub |
+| Language     | Java 17 |
 
 ---
 
@@ -47,82 +68,102 @@ patient-system/
 
 ---
 
-## ⚙️ Quickstart
+## ⚙️ Setup Instructions
 
 ### 1️⃣ Clone the Repository
-```
+```bash
 git clone https://github.com/TheComputationalCore/patient-system.git
 cd patient-system
 ```
 
 ### 2️⃣ Create MySQL Database
-```
+```sql
 CREATE DATABASE patient_system;
 ```
 
-### 3️⃣ Configure Database Credentials  
-Edit the file:
+### 3️⃣ Update Application Properties  
+Edit:
 
 ```
 src/main/resources/application.properties
 ```
 
-### 4️⃣ Build & Run
+Set:
 ```
+spring.datasource.url=jdbc:mysql://localhost:3306/patient_system?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
+```
+
+### 4️⃣ Build & Run
+```bash
 mvn clean install
 mvn spring-boot:run
 ```
 
 ### 5️⃣ Access the Application  
+Open in browser:
 ```
 http://localhost:8080
 ```
 
 ---
 
-## 🌐 Endpoints Summary
+## 🧪 API Testing (POSTMAN)
 
-| Feature | URL | Access |
-|--------|------|--------|
-| Home | `/` | Public |
-| Register | `/register` | Public |
-| Login | `/login` | Public |
-| Appointments | `/appointments` | Authenticated |
-| Medications | `/medications` | Authenticated |
-| Logout | `/logout` | Authenticated |
+This project was also tested using **Postman**.  
+Below are API request screenshots included inside `/screenshots`.
 
 ---
 
-## 📸 Screenshots
+# 📸 Screenshots
 
-(All images stored in `/screenshots/` folder)
+All screenshots are stored in the `screenshots/` folder.
 
-- Dashboard – `dashboard.png`
-- Registration – `registration.png`
-- Login – `login.png`
-- Logout – `logout.png`
-- Homepage – `homepage.png`
-- Add Medication – `adding medication.png`
-- Medication List – `medication list.png`
-- Book Appointment – `booking an appointment.png`
-- Appointment Success – `appointment booked successfully.png`
-- User Profile – `user profile.png`
-- Database Views – `database 1.png`, `database 2.png`, `database 3.png`, `database 4.png`, `database 5.png`
+## 🔐 Login & Registration
+![Login](./screenshots/login.png)
+![Registration](./screenshots/registration.png)
+
+## 🏠 Homepage & Dashboard
+![Homepage](./screenshots/homepage.png)
+![Dashboard](./screenshots/dashboard.png)
+
+## 🗓️ Appointments
+![Appointments GET](./screenshots/screenshots:appointments-get.png)
+![Book Appointment POST](./screenshots/screenshots:book-appointment-post.png)
+![Appointment Success](./screenshots/appointment booked successfully.png)
+
+## 💊 Medications
+![Medication List](./screenshots/medication list.png)
+![Adding Medication](./screenshots/adding medication.png)
+
+## 👨‍⚕️ User Profile
+![User Profile](./screenshots/user profile.png)
+
+## 🛢️ Database Screens
+![DB 1](./screenshots/database 1.png)
+![DB 2](./screenshots/database 2.png)
+![DB 3](./screenshots/database 3.png)
+![DB 4](./screenshots/database 4.png)
+![DB 5](./screenshots/database 5.png)
 
 ---
 
-## 🚀 Future Improvements
+## 🏗️ Future Enhancements
+- Doctor login portal  
+- Email notifications  
+- JWT authentication  
+- Deploy on AWS / Render / Railway  
+- Pagination & sorting  
 
-- Add admin roles  
-- Add pagination  
-- Add advanced search filters  
-- Add REST API layer  
-- Add unit tests  
-- Docker deployment  
+---
+
+## 📜 License
+MIT License  
 
 ---
 
 ## ✉️ Contact
-
 **Dinesh Chandra — TheComputationalCore**  
 GitHub: https://github.com/TheComputationalCore  
+YouTube: https://www.youtube.com/@TheComputationalCore  
