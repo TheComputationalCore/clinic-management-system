@@ -86,8 +86,6 @@ Edit:
 src/main/resources/application.properties
 ```
 
-```
-
 ### 4️⃣ Build & Run
 ```bash
 mvn clean install
