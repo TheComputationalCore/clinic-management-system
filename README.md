@@ -3,8 +3,6 @@
 
 A modern full‑stack **Spring Boot + Thymeleaf + MySQL** web application for patient registration, login, appointments, medications, and profile management — now presented with a clean UI and proper authentication using Spring Security.
 
-This project is perfect for showcasing **backend engineering**, **full‑stack development**, and **secure application design** in your portfolio.
-
 ---
 
 ## 🚀 Features
@@ -88,11 +86,6 @@ Edit:
 src/main/resources/application.properties
 ```
 
-Set:
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/patient_system?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-spring.datasource.username=YOUR_USERNAME
-spring.datasource.password=YOUR_PASSWORD
 ```
 
 ### 4️⃣ Build & Run
