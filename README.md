@@ -1,189 +1,116 @@
 # 🏥 Patient Management System
-A modern full-stack Spring Boot + Thymeleaf + MySQL application for managing patients, appointments, medications, and profiles — built with secure authentication and a clean UI.
 
-## 🚀 Features
-### 🔐 User Management
-- Patient Registration
-- Secure Login (Spring Security + BCrypt)
-- Personalized Dashboard
+A modern **full‑stack** Spring Boot + Thymeleaf + MySQL web application for patient registration, secure login, appointments, medications, and profile management — built with Spring Security, JPA/Hibernate, and a responsive Bootstrap UI.
 
-### 🗓️ Appointments
-- View Appointments
-- Book New Appointments
-- Flash messages & confirmations
+---
 
-### 💊 Medications
-- Add Medications
-- Delete Medications
-- Patient-specific medication list
+## 🚀 Highlights
+- Secure authentication with **Spring Security + BCrypt**  
+- Patient registration, profile management, and personalized dashboard  
+- Appointments: view, book, and confirm with flash messages  
+- Medications: add, list, and delete per-patient  
+- Doctors module: list doctors and link appointments  
+- CSRF-protected forms and layered MVC architecture
 
-### 👨‍⚕️ Doctors Module
-- View Doctors
-- Appointment ↔ Doctor linking
-
-## 🧩 Architecture
-- Spring Boot 3
-- Spring Security (Auth + CSRF)
-- JPA / Hibernate
-- Thymeleaf + Bootstrap
-- MVC layered structure
-- MySQL
+---
 
 ## 🧬 Tech Stack
-| Layer     | Technology |
-|-----------|------------|
-| Backend   | Spring Boot 3, Spring Security, Spring Data JPA |
-| Frontend  | Thymeleaf, HTML5, CSS3, Bootstrap |
-| Database  | MySQL |
-| Tools     | Maven, Postman, GitHub |
-| Language  | Java 17 |
+**Backend:** Java 17, Spring Boot 3, Spring Security, Spring Data JPA  
+**Frontend:** Thymeleaf, HTML5, CSS3, Bootstrap 5  
+**Database:** MySQL (production) / H2 (for quick local runs)  
+**Tools:** Maven, Postman, Git/GitHub
 
-## 📁 Project Structure
+---
+
+## 📁 Project Layout (short)
 ```
 patient-system/
-├── src/
-│   ├── main/java/.../controller
-│   ├── main/java/.../service
-│   ├── main/java/.../repository
-│   ├── main/java/.../model
-│   └── main/resources/
-│       ├── templates/
-│       └── static/
+├── src/main/java/.../{controller,service,repository,model}
+├── src/main/resources/{templates,static,application.properties}
 ├── screenshots/
-└── README.md
+└── pom.xml
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Quick Setup (short & safe)
 
-### Prerequisites
-- Java 17 SDK installed
-- Maven 3.x
-- MySQL server
-- (Optional) Postman for API testing
+### Requirements
+- JDK 17, Maven, MySQL (or use H2 for quick tests)
 
-### 1. Clone the repository
+### 1. Clone
 ```bash
 git clone https://github.com/TheComputationalCore/patient-system.git
 cd patient-system
 ```
 
-### 2. Create the MySQL database
-1. Start your MySQL server.
-2. Run:
+### 2. Create database (MySQL)
 ```sql
-CREATE DATABASE patient_system;
+CREATE DATABASE patient_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-### 3. Configure application properties
-Open `src/main/resources/application.properties` (or `application.yml`) and set the following properties:
+### 3. Configure credentials
+Open 
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/patient_system?useSSL=false&serverTimezone=UTC
-spring.datasource.username=YOUR_DB_USERNAME
-spring.datasource.password=YOUR_DB_PASSWORD
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=false
-spring.jpa.properties.hibernate.format_sql=true
-
-server.port=8080
+```src/main/resources/application.properties 
 ```
 
-> Replace `YOUR_DB_USERNAME` and `YOUR_DB_PASSWORD` with your credentials.
-
-### 4. Build the project
+### 4. Build & run
 ```bash
 mvn clean install -DskipTests
-```
-
-### 5. Run the application
-```bash
 mvn spring-boot:run
 ```
-Or run the generated jar:
-```bash
-java -jar target/patient-system-0.0.1-SNAPSHOT.jar
-```
-
-### 6. Open the app
-Visit: http://localhost:8080
+App will be available at `http://localhost:8080` (or the port shown in logs).
 
 ---
 
-## 🧪 API Testing (Postman)
+## 🧪 Postman & API testing
 
-API requests used during development are illustrated with screenshots in `/screenshots`. Typical Postman screenshots to include (make sure your actual filenames match the ones below; replace if necessary):
+**Postman screenshots (from `/screenshots/`):**
 
-- `postman_collection.png` — Postman collection overview  
-- `postman_request_login.png` — Login request + response  
-- `postman_request_add_medication.png` — Add medication POST request + response  
-- `postman_response_appointments.png` — GET appointments response
-
-### Postman Screenshots
-![Postman Collection](./screenshots/postman_collection.png)
-![Postman - Login Request](./screenshots/postman_request_login.png)
-![Postman - Add Medication](./screenshots/postman_request_add_medication.png)
-![Postman - Appointments Response](./screenshots/postman_response_appointments.png)
-
+![Postman - Collection](./screenshots/screenshot_postman.png)  
+![Postman - Encoded (colon)](./screenshots/screenshot%3Apostman.png)  
+![Postman - Literal (colon)](./screenshots/screenshot:postman.png)
 
 
 ---
 
-## 📸 UI & DB Screenshots
-All UI and DB screenshots are stored in `/screenshots`. Below are embedded examples using expected filenames. If your actual files have spaces, the README uses URL-encoded paths (spaces replaced with `%20`) and also supports quoted paths.
+## 📸 UI & Database screenshots
 
-### 🔐 Login & Registration
+
+### Authentication
 ![Login](./screenshots/login.png)
 ![Registration](./screenshots/registration.png)
 
-### 🏠 Homepage & Dashboard
+### Dashboard & Home
 ![Homepage](./screenshots/homepage.png)
 ![Dashboard](./screenshots/dashboard.png)
 
-### 🗓️ Appointments
+### Appointments
 ![Appointments List](./screenshots/appointments.png)
 ![Book Appointment](./screenshots/book%20appointment.png)
 ![Appointment Success](./screenshots/appointment%20booked%20successfully.png)
 
-### 💊 Medications
+### Medications
 ![Medication List](./screenshots/medication%20list.png)
 ![Add Medication](./screenshots/adding%20medication.png)
 
-### 👨‍⚕️ User Profile
+### Profile & DB
 ![User Profile](./screenshots/user%20profile.png)
-
-### 🛢️ Database Screens
-![DB 1](./screenshots/database%201.png)
-![DB 2](./screenshots/database%202.png)
-![DB 3](./screenshots/database%203.png)
-![DB 4](./screenshots/database%204.png)
-![DB 5](./screenshots/database%205.png)
+![DB Overview 1](./screenshots/database%201.png)
+![DB Overview 2](./screenshots/database%202.png)
 
 ---
 
-## 🏗️ Future Enhancements
-- Doctor login portal & roles (doctor, admin)  
-- Email notifications (SMTP / SendGrid)  
-- JWT token-based API for mobile clients  
-- Deploy to AWS / Render / Railway / Heroku  
-- Pagination, filtering & sorting on lists  
-- Automated tests & CI/CD
 
----
+## 📜 License & Contact
+**License:** MIT — see `LICENSE` 
 
-## 📜 License
-MIT License — see `LICENSE` file.
 
----
-
-## ✉️ Contact
-**Dinesh Chandra — TheComputationalCore**  
+**Author:** Dinesh Chandra — TheComputationalCore  
 - GitHub: https://github.com/TheComputationalCore  
 - YouTube: https://www.youtube.com/@TheComputationalCore
 
 ---
-
 
 
