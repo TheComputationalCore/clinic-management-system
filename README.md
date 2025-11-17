@@ -59,9 +59,6 @@ Homepage
 Registration  
 ![Registration](screenshots/registration.png)
 
-Login  
-![Login](screenshots/login.png)
-
 Logout  
 ![Logout](screenshots/logout.png)
 
@@ -83,31 +80,6 @@ Appointment Booked Successfully
 ---
 
 
----
-
-### 🧪 Postman / API Tests
-Home GET (Postman)  
-![Postman Home GET](screenshots:screenshots:postman-home-get.png)
-
-Register GET (Postman)  
-![Postman Register GET](screenshots:screenshots:postman-register-get.png)
-
-Register POST (Postman)  
-![Postman Register POST](screenshots:screenshots:postman-register-post.png)
-
-Login POST (Postman)  
-![Postman Login POST](screenshots:screenshots:postman-login-post.png)
-
-Logout POST (Postman)  
-![Postman Logout POST](screenshots:screenshots:postman-logout-post.png)
-
-Book Appointment POST (Postman)  
-![Postman Book Appointment POST](screenshots:screenshots:postman-book-appointment-post.png)
-
-Appointments GET (Postman)  
-![Postman Appointments GET](screenshots:screenshots:postman-appointments-get.png)
-
----
 
 # 🧩 Tech Stack
 
