@@ -1,6 +1,7 @@
 # 🚑 Patient Management System
 
-![License](https://img.shields.io/github/license/TheComputationalCore/patient-system)
+![License](https://img.shields.io/github/license/TheComputationalCore/patient-system?cacheSeconds=5)
+![Release](https://img.shields.io/github/v/release/TheComputationalCore/patient-system?cacheSeconds=5)
 ![Stars](https://img.shields.io/github/stars/TheComputationalCore/patient-system)
 ![Forks](https://img.shields.io/github/forks/TheComputationalCore/patient-system)
 ![Issues](https://img.shields.io/github/issues/TheComputationalCore/patient-system)
