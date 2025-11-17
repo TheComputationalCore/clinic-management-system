@@ -73,7 +73,7 @@ cd patient-system
 1. Start your MySQL server.
 2. Run:
 ```sql
-CREATE DATABASE patient_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE patient_system;
 ```
 
 ### 3. Configure application properties
@@ -91,7 +91,7 @@ spring.jpa.properties.hibernate.format_sql=true
 server.port=8080
 ```
 
-> Replace `YOUR_DB_USERNAME` and `YOUR_DB_PASSWORD` with your credentials. For production, use environment variables or encrypted secrets — do not commit plaintext credentials.
+> Replace `YOUR_DB_USERNAME` and `YOUR_DB_PASSWORD` with your credentials.
 
 ### 4. Build the project
 ```bash
