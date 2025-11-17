@@ -82,21 +82,6 @@ Appointment Booked Successfully
 
 ---
 
-### 📊 Database Screens
-Database - 1  
-![Database 1](screenshots/database 1.png)
-
-Database - 2  
-![Database 2](screenshots/database 2.png)
-
-Database - 3  
-![Database 3](screenshots/database 3.png)
-
-Database - 4  
-![Database 4](screenshots/database 4.png)
-
-Database - 5  
-![Database 5](screenshots/database 5.png)
 
 ---
 
