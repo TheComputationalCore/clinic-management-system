@@ -1,60 +1,198 @@
-# Patient System
+# 🚑 Patient Management System
 
-[![Build](https://github.com/TheComputationalCore/patient-system/actions/workflows/ci.yml/badge.svg)](https://github.com/TheComputationalCore/patient-system/actions)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![License](https://img.shields.io/github/license/TheComputationalCore/patient-system)
+![Stars](https://img.shields.io/github/stars/TheComputationalCore/patient-system)
+![Forks](https://img.shields.io/github/forks/TheComputationalCore/patient-system)
+![Issues](https://img.shields.io/github/issues/TheComputationalCore/patient-system)
 
-A **Spring Boot + Thymeleaf** based patient management system for handling appointments, medications, user authentication, and patient profiles.
-
----
-
-## 📸 Screenshots
-
-Place your screenshots inside the `screenshots/` folder.
-
-Example:
-![Dashboard](screenshots/dashboard.png)
+A modern **Patient Management System** built with **Spring Boot**, **Spring Security**, **Thymeleaf**, and **Spring Data JPA**.  
+Designed for clinics and healthcare teams to efficiently manage **patients, appointments, medications, and medical profiles** with a secure, clean, and user-friendly interface.
 
 ---
 
 ## ✨ Features
 
-- 👤 User registration & login (Spring Security + BCrypt)
-- 📅 Book and manage appointments
-- 💊 Track medications & medical history
-- 🖥️ Thymeleaf-based UI
-- 🛢️ Supports H2, MySQL, PostgreSQL
-- 🔧 Configurable via `application.properties`
-- 🐳 Optional Docker support
+### 👤 User Accounts & Security
+- User registration & login  
+- Password hashing with BCrypt  
+- Session-based authentication (Spring Security)
+
+### 🏥 Patient Management
+- Create, update, delete patient profiles  
+- Medical information & history tracking  
+- Easy patient search
+
+### 📅 Appointment Handling
+- Book, edit, cancel appointments  
+- View appointment history
+
+### 💊 Medication Tracking
+- Add and manage medications  
+- View prescription details
+
+### 🖥️ Modern UI (Thymeleaf + Bootstrap)
+- Clean responsive design  
+- Intuitive navigation  
+
+### 🛢️ Database Support
+- **H2 (in-memory)** — ideal for development  
+- **MySQL**  
+- **PostgreSQL**
+
+### 🐳 Docker Friendly
+- Build and run using Docker  
+- `.env` support for DB credentials  
 
 ---
 
-## 🚀 Quick Start (Local Setup)
+# 📸 Screenshots
 
-### **Prerequisites**
-- **Java 17+**
-- **Maven 3.6+**
-- (Optional) **Docker**
+All screenshots referenced below are stored inside the repository at **`/screenshots/`**.
 
-### 1️⃣ Clone the repository
+### 🏠 Main UI Screens
+Dashboard  
+![Dashboard](screenshots/dashboard.png)
+
+Homepage  
+![Homepage](screenshots/homepage.png)
+
+Registration  
+![Registration](screenshots/registration.png)
+
+Login  
+![Login](screenshots/login.png)
+
+Logout  
+![Logout](screenshots/logout.png)
+
+User Profile  
+![User Profile](screenshots/user profile.png)
+
+Medication List  
+![Medication List](screenshots/medication list.png)
+
+Adding Medication  
+![Adding Medication](screenshots/adding medication.png)
+
+Booking an Appointment  
+![Booking an Appointment](screenshots/booking an appointment.png)
+
+Appointment Booked Successfully  
+![Appointment Booked Successfully](screenshots/appointment booked successfully.png)
+
+---
+
+### 📊 Database Screens
+Database - 1  
+![Database 1](screenshots/database 1.png)
+
+Database - 2  
+![Database 2](screenshots/database 2.png)
+
+Database - 3  
+![Database 3](screenshots/database 3.png)
+
+Database - 4  
+![Database 4](screenshots/database 4.png)
+
+Database - 5  
+![Database 5](screenshots/database 5.png)
+
+---
+
+### 🧪 Postman / API Tests
+Home GET (Postman)  
+![Postman Home GET](screenshots:screenshots:postman-home-get.png)
+
+Register GET (Postman)  
+![Postman Register GET](screenshots:screenshots:postman-register-get.png)
+
+Register POST (Postman)  
+![Postman Register POST](screenshots:screenshots:postman-register-post.png)
+
+Login POST (Postman)  
+![Postman Login POST](screenshots:screenshots:postman-login-post.png)
+
+Logout POST (Postman)  
+![Postman Logout POST](screenshots:screenshots:postman-logout-post.png)
+
+Book Appointment POST (Postman)  
+![Postman Book Appointment POST](screenshots:screenshots:postman-book-appointment-post.png)
+
+Appointments GET (Postman)  
+![Postman Appointments GET](screenshots:screenshots:postman-appointments-get.png)
+
+---
+
+# 🧩 Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Backend | Spring Boot, Spring MVC, Spring Data JPA |
+| Frontend | Thymeleaf, Bootstrap 5 |
+| Security | Spring Security, BCrypt |
+| Database | H2, MySQL, PostgreSQL |
+| Build Tool | Maven |
+| Containerization | Docker |
+
+---
+
+# 📁 Project Structure
+
+```
+patient-system/
+├── src/
+│   ├── main/java/.../controller
+│   ├── main/java/.../service
+│   ├── main/java/.../repository
+│   ├── main/java/.../model
+│   └── main/resources/
+│       ├── templates/
+│       └── static/
+├── screenshots/
+├── Dockerfile
+└── README.md
+```
+
+---
+
+# 🚀 Quick Start
+
+## ✅ Prerequisites
+- Java **17+**
+- Maven **3.6+**
+- (Optional) Docker
+
+---
+
+## 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/TheComputationalCore/patient-system.git
 cd patient-system
 ```
 
-### 2️⃣ Build the project
+---
+
+## 2️⃣ Build the Application
 
 ```bash
 ./mvnw clean package
 ```
 
-### 3️⃣ Run with H2 (Recommended for Development)
+---
 
-Create or update this file:
+## 3️⃣ Run with H2 (Recommended)
 
-`src/main/resources/application.properties`
+Edit:
 
-```properties
+```
+src/main/resources/application.properties
+```
+
+Add (example):
+
+```
 server.port=8085
 
 spring.datasource.url=jdbc:h2:mem:patient_system
@@ -70,30 +208,33 @@ spring.h2.console.path=/h2-console
 spring.thymeleaf.cache=false
 ```
 
-Then start the app:
+Run the app:
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Visit:
+Open in your browser:
 
-**http://localhost:8085**
+- http://localhost:8085  
+- H2 console: http://localhost:8085/h2-console
 
 ---
 
-## 🗄️ Database Configuration Examples
+# 🗄️ Database Configuration Examples
 
-### **MySQL**
-```properties
+## MySQL
+
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/patient_system
 spring.datasource.username=root
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-### **PostgreSQL**
-```properties
+## PostgreSQL
+
+```
 spring.datasource.url=jdbc:postgresql://localhost:5432/patient_system
 spring.datasource.username=postgres
 spring.datasource.password=your_password
@@ -102,23 +243,31 @@ spring.jpa.hibernate.ddl-auto=update
 
 ---
 
-## 🐳 Docker Support
+# 🐳 Docker Support
 
-### Build the image
+### Build Image
+
 ```bash
 docker build -t patient-system:latest .
 ```
 
-### Run the container
+### Run Container
+
 ```bash
 docker run -p 8085:8085 --env-file .env patient-system:latest
 ```
 
-You can create a `.env` file to set your DB environment variables.
+Add database credentials to `.env`:
+
+```
+DB_URL=jdbc:mysql://...
+DB_USERNAME=...
+DB_PASSWORD=...
+```
 
 ---
 
-## 🧪 Running Tests
+# 🧪 Running Tests
 
 ```bash
 ./mvnw test
@@ -126,34 +275,20 @@ You can create a `.env` file to set your DB environment variables.
 
 ---
 
-## 🔄 Continuous Integration (CI)
+# 🤝 Contributing
 
-A GitHub Actions workflow automatically runs:
-
-- Maven build  
-- Tests  
-- Branch validation  
-
-You can find it under:  
-`.github/workflows/ci.yml`
+Contributions are welcome! Please read `CONTRIBUTING.md` for details on reporting issues, coding style, and opening pull requests.
 
 ---
 
-## 🤝 Contributing
+# 📜 License
 
-Contributions are welcome! Please read `CONTRIBUTING.md` for:
-
-- How to report bugs  
-- Coding style  
-- Opening pull requests  
-- Branch naming conventions  
+This project is licensed under the **MIT License**. See `LICENSE` for details.
 
 ---
 
-## 📄 License
+# 📬 Contact
 
-This project is licensed under the **MIT License**.  
-See `LICENSE` for details.
-
----
-
+**Dinesh Chandra — TheComputationalCore**  
+GitHub: https://github.com/TheComputationalCore  
+YouTube: https://www.youtube.com/@TheComputationalCore
