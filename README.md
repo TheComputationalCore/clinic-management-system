@@ -220,8 +220,8 @@ services:
       - "8085:8085"
     environment:
       DB_URL: jdbc:mysql://db:3306/patient_system
-      DB_USERNAME: root
-      DB_PASSWORD: root
+      DB_USERNAME: yourusername
+      DB_PASSWORD: yourpassword
 ```
 
 Run:
