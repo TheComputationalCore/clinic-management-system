@@ -191,8 +191,8 @@ docker run -p 8085:8085 --env-file .env patient-system:latest
 
 ```
 DB_URL=jdbc:mysql://localhost:3306/patient_system
-DB_USERNAME=root
-DB_PASSWORD=password
+DB_USERNAME=yourusername
+DB_PASSWORD=yourpassword
 ```
 
 ---
@@ -206,7 +206,7 @@ services:
     image: mysql:8
     container_name: patient_db
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: yourpassword
       MYSQL_DATABASE: patient_system
     ports:
       - "3306:3306"
