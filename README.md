@@ -2,8 +2,6 @@
 
 ![License](https://img.shields.io/github/license/TheComputationalCore/patient-system?cacheSeconds=5)
 ![Release](https://img.shields.io/github/v/release/TheComputationalCore/patient-system?cacheSeconds=5)
-![Stars](https://img.shields.io/github/stars/TheComputationalCore/patient-system)
-![Forks](https://img.shields.io/github/forks/TheComputationalCore/patient-system)
 ![Issues](https://img.shields.io/github/issues/TheComputationalCore/patient-system)
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)
