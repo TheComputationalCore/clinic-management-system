@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Patient Management System">
+</p>
+
 # 🚑 Patient Management System
 
 ![License](https://img.shields.io/github/license/TheComputationalCore/patient-system?cacheSeconds=5)
