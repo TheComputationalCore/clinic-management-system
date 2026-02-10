@@ -273,12 +273,6 @@ See: **SECURITY.md**
 
 This project is licensed under the **MIT License**.
 
----
-
-# 🏁 Release Notes
-
-The latest stable version:  
-➡ `v1.0.0 – Initial Stable Release`
 
 ---
 
