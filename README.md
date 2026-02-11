@@ -1,283 +1,287 @@
+```{=html}
 <p align="center">
-  <img src="assets/banner.png" alt="Patient Management System">
+```
+```{=html}
+<h1 align="center">
+```
+🏥 Clinic Management System
+```{=html}
+</h1>
+```
+```{=html}
+<p align="center">
+```
+`<strong>`{=html}Enterprise‑Grade Full Stack Spring Boot
+Application`</strong>`{=html}`<br>`{=html} Role-Based Access Control •
+Secure Authentication • Appointment Workflow • Prescription Management
+```{=html}
 </p>
-
-# 🚑 Patient Management System
-
-![License](https://img.shields.io/github/license/TheComputationalCore/patient-system?cacheSeconds=5)
-![Release](https://img.shields.io/github/v/release/TheComputationalCore/patient-system?cacheSeconds=5)
-![Issues](https://img.shields.io/github/issues/TheComputationalCore/patient-system)
-![Java](https://img.shields.io/badge/Java-17-orange)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)
-
-A modern, secure **Patient Management System** built with **Spring Boot**, **Spring Security**, **Thymeleaf**, and **Spring Data JPA**.  
-Designed for clinics and medical teams to manage **patients, appointments, medications, user accounts**, and database operations efficiently.
-
----
-
-# ✨ Features
-
-## 🔐 Authentication & Security
-- Secure login & registration  
-- BCrypt password hashing  
-- Spring Security authentication flow  
-
-## 🏥 Patient Management
-- Add, edit, update, delete patients  
-- View complete patient profiles  
-- Medical information & history tracking  
-
-## 📅 Appointment System
-- Book appointments  
-- Appointment confirmation screen  
-- List all appointments  
-- Postman-tested REST endpoints  
-
-## 💊 Medication Tracking
-- Add medications  
-- Medication list page  
-- Medication linked with patient  
-
-## 🖥 UI & Frontend
-- Thymeleaf server-rendered UI  
-- Bootstrap 5 responsive layout  
-- Clean, simple navigation  
-- User profile dashboard  
-
-## 🛢 Database Support
-Supports multiple databases out of the box:
-- **H2 (memory mode)**  
-- **MySQL**  
-- **PostgreSQL**  
-
-## 🐳 Docker Support
-- Pre-built Dockerfile  
-- Environment variable support  
-- Optional Docker Compose (included below)
-
----
-
-# 📸 Screenshots
-
-_All screenshots are stored under `/screenshots/`._
-
-## 🏠 UI Screens
-
-### Dashboard  
-![Dashboard](screenshots/dashboard.png)
-
-### Homepage  
-![Homepage](screenshots/homepage.png)
-
-### User Registration  
-![Registration](screenshots/registration.png)
-
-### Logout  
-![Logout](screenshots/logout.png)
-
----
-
-# 🧩 Architecture Overview
-
 ```
-Patient System (Spring Boot App)
-│
-├── Authentication Layer
-│     └── Spring Security, BCrypt
-│
-├── MVC Layer
-│     ├── Controllers (Handle requests)
-│     ├── Services    (Business logic)
-│     ├── Repositories (Database access)
-│     └── Models (Entities)
-│
-├── Thymeleaf UI Layer
-│     └── HTML templates + Bootstrap 5
-│
-└── Database Layer
-      └── H2 / MySQL / PostgreSQL
+```{=html}
+</p>
 ```
 
----
+------------------------------------------------------------------------
 
-# 🛠 Project Structure
-
+```{=html}
+<p align="center">
 ```
-patient-system/
-├── src/main/java/.../controller
-├── src/main/java/.../service
-├── src/main/java/.../repository
-├── src/main/java/.../model
-├── src/main/resources/
-│   ├── templates/
-│   └── static/
-├── screenshots/
-├── Dockerfile
-└── README.md
+`<img src="https://img.shields.io/badge/Java-17-orange?style=for-the-badge"/>`{=html}
+`<img src="https://img.shields.io/badge/Spring%20Boot-3.2.5-brightgreen?style=for-the-badge"/>`{=html}
+`<img src="https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge"/>`{=html}
+`<img src="https://img.shields.io/badge/Security-RBAC-red?style=for-the-badge"/>`{=html}
+`<img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge"/>`{=html}
+```{=html}
+</p>
 ```
 
----
+------------------------------------------------------------------------
 
-# 🚀 Quick Start (Local Development)
+# 🚀 Overview
 
-## 1️⃣ Clone the Repo
-```bash
-git clone https://github.com/TheComputationalCore/patient-system.git
-cd patient-system
+The **Clinic Management System** is a production-ready healthcare
+management platform built using **Spring Boot 3**, **Spring Security**,
+**Thymeleaf**, and **PostgreSQL**.
+
+It implements a clean **Layered Architecture**, secure authentication,
+and complete workflow management between:
+
+-   👨‍💼 Admin
+-   👨‍⚕️ Doctors
+-   🧑 Patients
+
+This project demonstrates real-world backend architecture, security
+practices, relational database modeling, and enterprise-level code
+organization.
+
+------------------------------------------------------------------------
+
+# 🧱 Architecture
+
+    Controller Layer  →  Service Layer  →  Repository Layer  →  PostgreSQL Database
+            ↓
+        Thymeleaf Views (Bootstrap UI)
+
+### Architectural Highlights
+
+-   Clean separation of concerns
+-   Centralized authentication via User entity
+-   Enum-based appointment status handling
+-   Transactional service layer
+-   Secure password encoding (BCrypt)
+-   Role-based authorization rules
+
+------------------------------------------------------------------------
+
+# 🔐 Role-Based Access Control (RBAC)
+
+  -----------------------------------------------------------------------
+  Role                   Capabilities
+  ---------------------- ------------------------------------------------
+  ADMIN                  Manage doctors, manage patients, dashboard
+                         analytics
+
+  DOCTOR                 View appointments, approve/reject bookings,
+                         prescribe medication
+
+  PATIENT                Register, book appointments, view prescriptions,
+                         manage profile
+  -----------------------------------------------------------------------
+
+Security implemented using:
+
+-   Spring Security
+-   BCrypt password hashing
+-   Custom login page
+-   CSRF protection
+-   Authority-based route restrictions
+
+------------------------------------------------------------------------
+
+# 📸 Application Screenshots
+
+## 🏠 Landing Page
+
+![Homepage](assets/homepage.png)
+
+## 📝 Registration
+
+![Registration](assets/registration.png)
+
+## 🔐 Login
+
+![Login](assets/login-page.png)
+
+------------------------------------------------------------------------
+
+## 👨‍💼 Admin Panel
+
+### Admin Dashboard
+
+![Admin Dashboard](assets/admin-dashboard.png)
+
+### Manage Doctors
+
+![Manage Doctors](assets/manage-doctors.png)
+
+### Manage Patients
+
+![Patients](assets/patients.png)
+
+### Add Doctor
+
+![Add Doctor](assets/adding-doctor.png)
+
+------------------------------------------------------------------------
+
+## 🧑 Patient Experience
+
+### Patient Dashboard
+
+![Patient Dashboard](assets/patient-dashboard.png)
+
+### Book Appointment
+
+![Book Appointment](assets/booking-appointment.png)
+
+### Appointment Confirmation
+
+![Appointment List](assets/appointment-booking.png)
+
+### Patient Profile
+
+![Patient Profile](assets/patient-profile.png)
+
+### Prescriptions
+
+![Prescriptions](assets/prescriptions.png)
+
+------------------------------------------------------------------------
+
+## 👨‍⚕️ Doctor Experience
+
+### Doctor Dashboard
+
+![Doctor Dashboard](assets/doctor-dashboard.png)
+
+### Patient Details & Prescribing
+
+![Patient Details](assets/patient-details.png)
+
+------------------------------------------------------------------------
+
+# 🗄 Database Design
+
+### Core Tables
+
+-   users (authentication)
+-   patients
+-   doctors
+-   appointments
+-   medications
+
+### Relationships
+
+-   One-to-One: Patient ↔ User
+-   One-to-One: Doctor ↔ User
+-   Many-to-One: Appointment → Patient
+-   Many-to-One: Appointment → Doctor
+-   Many-to-One: Medication → Patient
+-   Many-to-One: Medication → Doctor
+
+------------------------------------------------------------------------
+
+# 🛠 Tech Stack
+
+  Layer      Technology
+  ---------- -------------------
+  Backend    Spring Boot 3.2.5
+  Security   Spring Security
+  ORM        Hibernate / JPA
+  Database   PostgreSQL
+  Frontend   Thymeleaf
+  UI         Bootstrap 5
+  Build      Maven
+  Java       17
+
+------------------------------------------------------------------------
+
+# ⚙️ Running Locally
+
+## 1️⃣ Clone Repository
+
+``` bash
+git clone https://github.com/TheComputationalCore/clinic-management-system.git
+cd clinic-management-system
 ```
 
-## 2️⃣ Build
-```bash
-./mvnw clean package
-```
+## 2️⃣ Configure Database
 
-## 3️⃣ Run with H2 (recommended for dev)
-Update `application.properties`:
-
-```
-server.port=8085
-spring.datasource.url=jdbc:h2:mem:patient_system
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
+``` properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/clinic_db
+spring.datasource.username=your_username
+spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
-spring.thymeleaf.cache=false
 ```
 
-Run:
+## 3️⃣ Run Application
 
-```bash
+``` bash
 ./mvnw spring-boot:run
 ```
 
-Open in browser:
+Access at:
 
-- App → http://localhost:8085  
-- H2 Console → http://localhost:8085/h2-console  
+    http://localhost:8085
 
----
+------------------------------------------------------------------------
 
-# 🗄 Database Configuration
+# 🧪 Testing
 
-## 🐬 MySQL
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/patient_system
-spring.datasource.username=root
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-```
+Run unit tests:
 
-## 🐘 PostgreSQL
-```
-spring.datasource.url=jdbc:postgresql://localhost:5432/patient_system
-spring.datasource.username=postgres
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-```
-
----
-
-# 🐳 Docker Setup
-
-## Build Docker Image
-```bash
-docker build -t patient-system:latest .
-```
-
-## Run Container
-```bash
-docker run -p 8085:8085 --env-file .env patient-system:latest
-```
-
-### Example `.env` file:
-
-```
-DB_URL=jdbc:mysql://localhost:3306/patient_system
-DB_USERNAME=yourusername
-DB_PASSWORD=yourpassword
-```
-
----
-
-# 🐳 Docker Compose (Optional)
-
-```yaml
-version: "3.9"
-services:
-  db:
-    image: mysql:8
-    container_name: patient_db
-    environment:
-      MYSQL_ROOT_PASSWORD: yourpassword
-      MYSQL_DATABASE: patient_system
-    ports:
-      - "3306:3306"
-
-  app:
-    build: .
-    container_name: patient_app
-    depends_on:
-      - db
-    ports:
-      - "8085:8085"
-    environment:
-      DB_URL: jdbc:mysql://db:3306/patient_system
-      DB_USERNAME: yourusername
-      DB_PASSWORD: yourpassword
-```
-
-Run:
-```bash
-docker compose up --build
-```
-
----
-
-# 📘 API Documentation (Basic)
-
-| Method | Endpoint | Description |
-|--------|----------|--------------|
-| GET | `/` | Home |
-| GET | `/register` | Registration page |
-| POST | `/register` | Register new user |
-| POST | `/login` | Login user |
-| POST | `/logout` | Logout user |
-| GET | `/appointments` | Get all appointments |
-| POST | `/appointments/book` | Book appointment |
-
----
-
-# 🧪 Running Tests
-
-```
+``` bash
 ./mvnw test
 ```
 
----
+Includes:
 
-# 🤝 Contributing
+-   Service layer tests
+-   Mocked repository tests
+-   Context load validation
 
-See: **CONTRIBUTING.md**
+------------------------------------------------------------------------
 
----
+# 🐳 Docker (Optional)
 
-# 🔐 Security Policy
+``` bash
+docker build -t clinic-ms .
+docker run -p 8085:8085 clinic-ms
+```
 
-See: **SECURITY.md**
+------------------------------------------------------------------------
 
----
+# 📈 Why This Project Stands Out
 
-# 📜 License
+✔ Enterprise layered architecture\
+✔ Real RBAC implementation\
+✔ Production-ready security\
+✔ Clean UI & user experience\
+✔ Enum-based workflow states\
+✔ Proper relational modeling\
+✔ Transactional service layer\
+✔ Recruiter-ready GitHub project
 
-This project is licensed under the **MIT License**.
-
-
----
+------------------------------------------------------------------------
 
 # 👤 Author
 
-**Dinesh Chandra — TheComputationalCore**  
-GitHub: https://github.com/TheComputationalCore  
+**Dinesh Chandra**\
+GitHub: https://github.com/TheComputationalCore\
 YouTube: https://www.youtube.com/@TheComputationalCore
+
+------------------------------------------------------------------------
+
+# 📜 License
+
+MIT License
