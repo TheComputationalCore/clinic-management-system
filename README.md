@@ -1,223 +1,168 @@
-# 🏥 ClinicOS --- Enterprise Clinic Management System
+# 🏥 Clinic Management System Pro
 
-```{=html}
-<p align="center">
-```
-`<b>`{=html}Production-Ready • Role-Based • Secure • Layered
-Architecture • PostgreSQL Powered`</b>`{=html}
-```{=html}
-</p>
-```
+### Enterprise-Grade Full-Stack Healthcare Platform
 
-------------------------------------------------------------------------
-
-# 🚀 Overview
-
-ClinicOS is a **full-scale enterprise-grade Clinic Management System**
-built with:
-
--   ⚙ Spring Boot 3
--   🔐 Spring Security (RBAC + BCrypt)
--   🗄 PostgreSQL
--   🧠 Hibernate / JPA
--   🎨 Thymeleaf + Bootstrap 5
--   🧪 JUnit + Mockito
--   📦 Maven
--   🐳 Docker Ready
-
-This system enables clinics to manage:
-
--   👨‍💼 Admin operations
--   👨‍⚕️ Doctor workflows
--   🧑‍💻 Patient portal
--   📅 Appointment lifecycle
--   💊 Prescription management
-
-Designed following **industry best practices** and clean layered
-architecture.
+![Java](https://img.shields.io/badge/Java-17-orange) ![Spring
+Boot](https://img.shields.io/badge/Spring%20Boot-3.2-brightgreen)
+![Security](https://img.shields.io/badge/Spring%20Security-Enabled-success)
+![Database](https://img.shields.io/badge/PostgreSQL-14-blue)
+![Build](https://img.shields.io/badge/Maven-Build-red)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 ------------------------------------------------------------------------
 
-# 🧱 Architecture
+## 🚀 Overview
 
-    Controller Layer
-            ↓
-    Service Layer
-            ↓
-    Repository Layer
-            ↓
-    PostgreSQL Database
+Clinic Management System Pro is a production-ready, enterprise-level
+healthcare management platform built with modern backend engineering
+principles.
 
--   Separation of concerns
--   Transactional services
--   Role-based authorization
--   Clean MVC pattern
--   Production-ready configuration
+Designed using Layered Architecture, Role-Based Access Control, and
+Secure Authentication, this system enables seamless collaboration
+between:
+
+-   👨‍💼 Admins
+-   👨‍⚕️ Doctors
+-   🧑 Patients
+
+Built for scalability, maintainability, and real-world deployment.
 
 ------------------------------------------------------------------------
 
-# 🔐 Security Model
+# ✨ Core Features
 
+## 🔐 Authentication & Security
+
+-   Spring Security 6
 -   BCrypt password hashing
--   Role-Based Access Control
--   CSRF protection
--   Custom login page
--   Session invalidation on logout
+-   Role-Based Authorization (RBAC)
+-   CSRF Protection
+-   Secure session management
 
-Roles:
-
--   ROLE_ADMIN
--   ROLE_DOCTOR
--   ROLE_PATIENT
-
-------------------------------------------------------------------------
-
-# 📊 Features
-
-## 👨‍💼 Admin
+## 👨‍💼 Admin Capabilities
 
 -   Manage doctors
 -   Manage patients
+-   View system statistics
 -   Dashboard analytics
--   Secure role-restricted endpoints
 
-## 👨‍⚕️ Doctor
+## 👨‍⚕️ Doctor Capabilities
 
 -   View appointments
--   Approve/reject bookings
+-   Approve / Reject bookings
 -   Prescribe medications
--   View assigned patients
+-   View patient history
 
-## 🧑 Patient
+## 🧑 Patient Capabilities
 
--   Register securely
+-   Register & login
 -   Book appointments
 -   View prescriptions
 -   Manage profile
 
 ------------------------------------------------------------------------
 
-# 🗄 Database Design
+# 🏗 Architecture
 
-## Users Table
+Controller Layer → Service Layer → Repository Layer → Database
 
--   id (PK)
--   email (unique)
--   password (BCrypt encoded)
--   role
-
-## Doctors Table
-
--   id (PK)
--   name
--   specialization
--   contact
--   user_id (FK)
-
-## Patients Table
-
--   id (PK)
--   name
--   phone
--   medical_history
--   user_id (FK)
-
-## Appointments Table
-
--   id (PK)
--   appointment_time
--   status (ENUM)
--   doctor_id (FK)
--   patient_id (FK)
-
-## Medications Table
-
--   id (PK)
--   name
--   dosage
--   frequency
--   prescribed_date
--   doctor_id (FK)
--   patient_id (FK)
+-   Clean separation of concerns
+-   Transactional service layer
+-   JPA/Hibernate ORM mapping
+-   REST + MVC hybrid design
 
 ------------------------------------------------------------------------
 
 # 🛠 Tech Stack
 
-  Layer      Technology
-  ---------- -----------------
-  Backend    Spring Boot 3
-  Security   Spring Security
-  ORM        Hibernate / JPA
-  Database   PostgreSQL
-  Frontend   Thymeleaf
-  UI         Bootstrap 5
-  Build      Maven
-  Java       17
+  Layer        Technology
+  ------------ -------------------
+  Backend      Spring Boot 3
+  Security     Spring Security
+  ORM          Hibernate / JPA
+  Database     PostgreSQL
+  Frontend     Thymeleaf
+  UI           Bootstrap 5
+  Build Tool   Maven
+  Testing      JUnit 5 + Mockito
 
 ------------------------------------------------------------------------
 
-# 🐳 Docker Support
+# 📸 Screenshots
 
-Build image:
+## 🏠 Homepage
 
-    docker build -t clinicos .
+![Homepage](assets/homepage.png)
 
-Run container:
+## 🔐 Login Page
 
-    docker run -p 8085:8085 clinicos
+![Login](assets/login-page.png)
 
-------------------------------------------------------------------------
+## 👨‍💼 Admin Dashboard
 
-# 🧪 Running Tests
+![Admin](assets/admin-dashboard.png)
 
-    mvn test
+## 👨‍⚕️ Doctor Dashboard
 
-Includes: - Unit tests - Service layer tests - Mock repository testing
+![Doctor](assets/doctor-dashboard.png)
 
-------------------------------------------------------------------------
+## 🧑 Patient Dashboard
 
-# 🚀 Run Locally
+![Patient](assets/patient-dashboard.png)
 
-    mvn clean spring-boot:run
+## 📅 Appointment Booking
 
-Access:
+![Booking](assets/booking-appointment.png)
 
-http://localhost:8085
+## 💊 Prescriptions
 
-------------------------------------------------------------------------
-
-# 📦 Production Considerations
-
--   Externalized configuration
--   Environment-based DB setup
--   Docker-compatible
--   Stateless session management possible
--   PostgreSQL production ready
+![Prescriptions](assets/prescriptions.png)
 
 ------------------------------------------------------------------------
 
-# 📌 Why This Project Stands Out
+# 🗄 Database Schema Overview
 
--   Clean layered architecture
--   Real-world RBAC implementation
--   Secure authentication model
--   Relational database mapping
--   Enterprise-style structure
--   Resume-level backend engineering
--   YouTube demo ready
+Tables: - users - doctors - patients - appointments - medications
+
+Relational mapping: - One-to-One (User ↔ Doctor/Patient) - One-to-Many
+(Doctor → Appointments) - Many-to-One (Medication → Doctor & Patient)
 
 ------------------------------------------------------------------------
 
-# 📈 Future Enhancements
+# 🐳 Docker Deployment
 
--   JWT authentication
--   Microservices version
--   REST API documentation (Swagger)
--   CI/CD pipeline
--   Kubernetes deployment
--   Caching layer (Redis)
--   Email notifications
+Build: docker build -t clinic-system .
+
+Run: docker run -p 8085:8085 clinic-system
+
+------------------------------------------------------------------------
+
+# 🚀 Local Setup
+
+Clone: git clone
+https://github.com/TheComputationalCore/clinic-management-system.git
+
+Run: mvn spring-boot:run
+
+Access: http://localhost:8085
+
+------------------------------------------------------------------------
+
+# 🧪 Testing
+
+mvn test
+
+Includes: - Service layer unit tests - Repository validation - Security
+configuration checks
+
+------------------------------------------------------------------------
+
+# 🔮 Roadmap
+
+-   JWT Authentication
+-   Swagger Documentation
+-   CI/CD Pipeline
+-   Cloud Deployment Guide
 
 ------------------------------------------------------------------------
 
@@ -229,4 +174,10 @@ YouTube: https://www.youtube.com/@TheComputationalCore
 
 ------------------------------------------------------------------------
 
-# ⭐ If you found this project valuable, consider giving it a star.
+# 📜 License
+
+MIT License
+
+------------------------------------------------------------------------
+
+⭐ If you find this project valuable, consider giving it a star!
