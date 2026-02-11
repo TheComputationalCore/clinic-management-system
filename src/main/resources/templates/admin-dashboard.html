@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - ClinicMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+        }
+
+        .dashboard-title {
+            font-weight: 600;
+        }
+
+        .dashboard-card {
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 20px 0;
+            background-color: #212529;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <span class="navbar-brand">ClinicMS - Admin</span>
+
+    <div class="ms-auto">
+
+        <!-- ✅ Proper POST Logout -->
+        <form th:action="@{/logout}" method="post" class="d-inline">
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}" />
+            <button type="submit" class="btn btn-outline-light btn-sm">
+                Logout
+            </button>
+        </form>
+
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="container mt-5">
+
+    <h2 class="dashboard-title mb-4">Admin Dashboard</h2>
+
+    <div class="row g-4">
+
+        <!-- Doctors Card -->
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm p-4 text-center">
+                <h5 class="fw-semibold">👨‍⚕️ Doctors</h5>
+                <p class="text-muted">Manage all registered doctors.</p>
+                <a th:href="@{/admin/doctors}" class="btn btn-primary btn-sm">
+                    View Doctors
+                </a>
+            </div>
+        </div>
+
+        <!-- Patients Card -->
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm p-4 text-center">
+                <h5 class="fw-semibold">🧑‍🤝‍🧑 Patients</h5>
+                <p class="text-muted">Manage patient records and accounts.</p>
+                <a th:href="@{/admin/patients}" class="btn btn-success btn-sm">
+                    View Patients
+                </a>
+            </div>
+        </div>
+
+        <!-- Settings Card -->
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm p-4 text-center">
+                <h5 class="fw-semibold">⚙ System Settings</h5>
+                <p class="text-muted">Configure application settings.</p>
+                <a th:href="@{/admin/settings}" class="btn btn-secondary btn-sm">
+                    Configure
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Clinic Management System | Admin Panel
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

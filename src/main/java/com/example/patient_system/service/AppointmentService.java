@@ -1,87 +1,137 @@
 package com.example.patient_system.service;
 
-import com.example.patient_system.model.Appointment;
-import com.example.patient_system.model.Doctor;
-import com.example.patient_system.model.Patient;
-import com.example.patient_system.repository.AppointmentRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.example.patient_system.model.Appointment;
+import com.example.patient_system.model.AppointmentStatus;
+import com.example.patient_system.model.Doctor;
+import com.example.patient_system.model.Patient;
+import com.example.patient_system.repository.AppointmentRepository;
 
 @Service
 public class AppointmentService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AppointmentService.class);
+    private final AppointmentRepository appointmentRepository;
+    private final DoctorService doctorService;
 
-    @Autowired
-    private AppointmentRepository appointmentRepository;
+    public AppointmentService(AppointmentRepository appointmentRepository,
+                              DoctorService doctorService) {
+        this.appointmentRepository = appointmentRepository;
+        this.doctorService = doctorService;
+    }
 
-    @Autowired
-    private DoctorService doctorService;
-
+    // =====================================
+    // PATIENT BOOKS APPOINTMENT
+    // =====================================
     public Appointment bookAppointment(Appointment appointment) {
+
         Patient patient = appointment.getPatient();
         Doctor doctor = doctorService.getDoctorById(appointment.getDoctor().getId());
         LocalDateTime appointmentTime = appointment.getAppointmentTime();
 
         if (patient == null || doctor == null || appointmentTime == null) {
-            logger.error("Invalid appointment data: patient={}, doctor={}, appointmentTime={}",
-                    patient, doctor, appointmentTime);
-            throw new IllegalArgumentException("Patient, doctor, and appointment time must not be null");
+            throw new IllegalArgumentException(
+                    "Patient, doctor, and appointment time must not be null"
+            );
         }
 
-        List<Appointment> conflictingAppointments = appointmentRepository
-                .findByDoctorIdAndAppointmentTimeBetween(
+        // Check for 30-minute conflict window
+        List<Appointment> conflicts =
+                appointmentRepository.findByDoctorIdAndAppointmentTimeBetween(
                         doctor.getId(),
                         appointmentTime.minusMinutes(30),
                         appointmentTime.plusMinutes(30)
                 );
-        if (!conflictingAppointments.isEmpty()) {
-            logger.warn("Appointment slot unavailable for doctorId={} at {}",
-                    doctor.getId(), appointmentTime);
+
+        if (!conflicts.isEmpty()) {
             throw new IllegalArgumentException("Appointment slot is not available");
         }
 
         appointment.setDoctor(doctor);
-        if (appointment.getStatus() == null) {
-            appointment.setStatus("SCHEDULED");
-        }
-        logger.info("Booking appointment for patientId={} with doctorId={} at {}",
-                patient.getId(), doctor.getId(), appointmentTime);
+        appointment.setStatus(AppointmentStatus.PENDING);
+
         return appointmentRepository.save(appointment);
     }
 
+    // =====================================
+    // GET APPOINTMENTS FOR PATIENT
+    // =====================================
     public List<Appointment> getAppointmentsByPatient(Patient patient) {
+
         if (patient == null) {
-            logger.warn("Patient is null in getAppointmentsByPatient");
             return Collections.emptyList();
         }
-        List<Appointment> appointments = appointmentRepository.findByPatientId(patient.getId());
-        if (appointments == null) {
-            logger.info("No appointments found for patientId={}", patient.getId());
+
+        return appointmentRepository.findByPatientId(patient.getId());
+    }
+
+    // =====================================
+    // GET APPOINTMENTS FOR DOCTOR
+    // =====================================
+    public List<Appointment> getAppointmentsByDoctor(Doctor doctor) {
+
+        if (doctor == null) {
             return Collections.emptyList();
         }
-        List<Appointment> validAppointments = appointments.stream()
-                .filter(a -> {
-                    boolean isValid = a != null && a.getAppointmentTime() != null && a.getDoctor() != null && a.getDoctor().getName() != null;
-                    if (!isValid) {
-                        logger.warn("Invalid appointment found: id={}, appointmentTime={}, doctor={}, doctorName={}",
-                                a != null ? a.getId() : null,
-                                a != null ? a.getAppointmentTime() : null,
-                                a != null ? a.getDoctor() : null,
-                                a != null && a.getDoctor() != null ? a.getDoctor().getName() : null);
-                    }
-                    return isValid;
-                })
-                .collect(Collectors.toList());
-        logger.info("Retrieved {} valid appointments for patientId={}",
-                validAppointments.size(), patient.getId());
-        return validAppointments;
+
+        return appointmentRepository.findByDoctorId(doctor.getId());
+    }
+
+    // =====================================
+    // GET PENDING APPOINTMENTS FOR DOCTOR
+    // =====================================
+    public List<Appointment> getPendingAppointmentsForDoctor(Doctor doctor) {
+
+        if (doctor == null) {
+            return Collections.emptyList();
+        }
+
+        return appointmentRepository.findByDoctorIdAndStatus(
+                doctor.getId(),
+                AppointmentStatus.PENDING
+        );
+    }
+
+    // =====================================
+    // DOCTOR APPROVES APPOINTMENT
+    // =====================================
+    public Appointment approveAppointment(Long appointmentId) {
+
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(() -> new IllegalArgumentException("Appointment not found"));
+
+        appointment.setStatus(AppointmentStatus.APPROVED);
+
+        return appointmentRepository.save(appointment);
+    }
+
+    // =====================================
+    // DOCTOR REJECTS APPOINTMENT
+    // =====================================
+    public Appointment rejectAppointment(Long appointmentId) {
+
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(() -> new IllegalArgumentException("Appointment not found"));
+
+        appointment.setStatus(AppointmentStatus.REJECTED);
+
+        return appointmentRepository.save(appointment);
+    }
+
+    // =====================================
+    // MARK APPOINTMENT COMPLETED
+    // =====================================
+    public Appointment completeAppointment(Long appointmentId) {
+
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(() -> new IllegalArgumentException("Appointment not found"));
+
+        appointment.setStatus(AppointmentStatus.COMPLETED);
+
+        return appointmentRepository.save(appointment);
     }
 }

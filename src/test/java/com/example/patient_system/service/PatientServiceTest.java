@@ -1,24 +1,32 @@
-package com.example.patient_system.service; // Update to com.patientmanagement.service if refactored
-
-import com.example.patient_system.model.Patient;
-import com.example.patient_system.repository.PatientRepository;
-import com.example.patient_system.service.PatientService;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.crypto.password.PasswordEncoder;
+package com.example.patient_system.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.example.patient_system.model.Patient;
+import com.example.patient_system.model.User;
+import com.example.patient_system.repository.PatientRepository;
+import com.example.patient_system.repository.UserRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class PatientServiceTest {
+class PatientServiceTest {
 
     @Mock
     private PatientRepository patientRepository;
+
+    @Mock
+    private UserRepository userRepository;
 
     @Mock
     private PasswordEncoder passwordEncoder;
@@ -26,40 +34,85 @@ public class PatientServiceTest {
     @InjectMocks
     private PatientService patientService;
 
+    // ============================================
+    // ✅ TEST: Successful Registration
+    // ============================================
     @Test
-    public void testRegisterPatient() {
+    void testRegisterPatientSuccess() {
+
+        // Arrange
+        User user = new User();
+        user.setEmail("john@example.com");
+        user.setPassword("password");
+
         Patient patient = new Patient();
         patient.setName("John Doe");
-        patient.setEmail("john@example.com");
-        patient.setPassword("password");
+        patient.setPhone("9999999999");
+        patient.setMedicalHistory("No issues");
+        patient.setUser(user);
 
-        // Mock the password encoder
-        when(passwordEncoder.encode("password")).thenReturn("encodedPassword");
+        when(userRepository.existsByEmail("john@example.com"))
+                .thenReturn(false);
 
-        // Mock the repository to return false for email existence
-        when(patientRepository.existsByEmailIgnoreCase("john@example.com")).thenReturn(false);
+        when(passwordEncoder.encode("password"))
+                .thenReturn("encodedPassword");
 
-        // Mock the save operation
-        when(patientRepository.save(patient)).thenReturn(patient);
+        when(userRepository.save(any(User.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
 
-        // Call the service method
+        when(patientRepository.save(any(Patient.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        // Act
         Patient savedPatient = patientService.registerPatient(patient);
 
-        // Assertions
+        // Assert
         assertEquals("John Doe", savedPatient.getName());
-        assertEquals("john@example.com", savedPatient.getEmail());
-        assertEquals("encodedPassword", savedPatient.getPassword());
+        assertEquals("john@example.com", savedPatient.getUser().getEmail());
+        assertEquals("encodedPassword", savedPatient.getUser().getPassword());
+        assertEquals("ROLE_PATIENT", savedPatient.getUser().getRole());
+
+        verify(userRepository, times(1)).save(any(User.class));
+        verify(patientRepository, times(1)).save(any(Patient.class));
     }
 
+    // ============================================
+    // ✅ TEST: Email Already Exists
+    // ============================================
     @Test
-    public void testRegisterPatientEmailExists() {
+    void testRegisterPatientEmailExists() {
+
+        // Arrange
+        User user = new User();
+        user.setEmail("john@example.com");
+        user.setPassword("password");
+
         Patient patient = new Patient();
-        patient.setEmail("john@example.com");
+        patient.setUser(user);
 
-        // Mock the repository to return true for email existence
-        when(patientRepository.existsByEmailIgnoreCase("john@example.com")).thenReturn(true);
+        when(userRepository.existsByEmail("john@example.com"))
+                .thenReturn(true);
 
-        // Verify that an exception is thrown
-        assertThrows(IllegalArgumentException.class, () -> patientService.registerPatient(patient));
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class,
+                () -> patientService.registerPatient(patient));
+
+        verify(userRepository, never()).save(any());
+        verify(patientRepository, never()).save(any());
+    }
+
+    // ============================================
+    // ✅ TEST: Invalid Patient Data
+    // ============================================
+    @Test
+    void testRegisterPatientInvalidData() {
+
+        Patient patient = new Patient(); // No user attached
+
+        assertThrows(IllegalArgumentException.class,
+                () -> patientService.registerPatient(patient));
+
+        verify(userRepository, never()).save(any());
+        verify(patientRepository, never()).save(any());
     }
 }
