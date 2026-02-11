@@ -1,43 +1,10 @@
-```{=html}
-<p align="center">
-```
-```{=html}
-<h1 align="center">
-```
-🏥 Clinic Management System
-```{=html}
-</h1>
-```
-```{=html}
-<h3 align="center">
-```
-Enterprise-Grade Role-Based Medical Management Platform
-```{=html}
-</h3>
-```
-```{=html}
-<p align="center">
-```
-Built with Spring Boot 3 • Spring Security • PostgreSQL • Thymeleaf •
-Hibernate
-```{=html}
-</p>
-```
-```{=html}
-</p>
-```
-
-------------------------------------------------------------------------
+# 🏥 ClinicOS --- Enterprise Clinic Management System
 
 ```{=html}
 <p align="center">
 ```
-`<img src="https://img.shields.io/badge/Java-17+-orange" />`{=html}
-`<img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen" />`{=html}
-`<img src="https://img.shields.io/badge/Security-Spring%20Security-blue" />`{=html}
-`<img src="https://img.shields.io/badge/Database-PostgreSQL-blueviolet" />`{=html}
-`<img src="https://img.shields.io/badge/Architecture-Layered-success" />`{=html}
-`<img src="https://img.shields.io/badge/Status-Production%20Ready-darkgreen" />`{=html}
+`<b>`{=html}Production-Ready • Role-Based • Secure • Layered
+Architecture • PostgreSQL Powered`</b>`{=html}
 ```{=html}
 </p>
 ```
@@ -46,245 +13,220 @@ Hibernate
 
 # 🚀 Overview
 
-**Clinic Management System** is a secure, scalable, full-stack web
-application designed for managing:
+ClinicOS is a **full-scale enterprise-grade Clinic Management System**
+built with:
 
--   👨‍⚕️ Doctors
--   🧑 Patients
--   📅 Appointments
--   💊 Prescriptions
--   🔐 Authentication & Authorization
+-   ⚙ Spring Boot 3
+-   🔐 Spring Security (RBAC + BCrypt)
+-   🗄 PostgreSQL
+-   🧠 Hibernate / JPA
+-   🎨 Thymeleaf + Bootstrap 5
+-   🧪 JUnit + Mockito
+-   📦 Maven
+-   🐳 Docker Ready
 
-This project follows **industry-level architecture standards** and
-implements **Role-Based Access Control (RBAC)** using Spring Security.
+This system enables clinics to manage:
+
+-   👨‍💼 Admin operations
+-   👨‍⚕️ Doctor workflows
+-   🧑‍💻 Patient portal
+-   📅 Appointment lifecycle
+-   💊 Prescription management
+
+Designed following **industry best practices** and clean layered
+architecture.
 
 ------------------------------------------------------------------------
 
-# 🏗️ Enterprise Architecture
+# 🧱 Architecture
 
     Controller Layer
             ↓
-    Service Layer (Business Logic)
+    Service Layer
             ↓
-    Repository Layer (JPA)
+    Repository Layer
             ↓
     PostgreSQL Database
 
-### Architectural Highlights
-
-✔ Layered architecture\
-✔ Separation of concerns\
-✔ Clean transactional boundaries\
-✔ DTO-safe entity handling\
-✔ Secure password encryption (BCrypt)\
-✔ CSRF Protection\
-✔ Production-ready configuration
+-   Separation of concerns
+-   Transactional services
+-   Role-based authorization
+-   Clean MVC pattern
+-   Production-ready configuration
 
 ------------------------------------------------------------------------
 
-# 🔐 Security Architecture
+# 🔐 Security Model
 
-### Authentication Flow
+-   BCrypt password hashing
+-   Role-Based Access Control
+-   CSRF protection
+-   Custom login page
+-   Session invalidation on logout
 
-1.  User submits email + password\
-2.  Spring Security validates credentials\
-3.  Password compared using BCrypt\
-4.  Role loaded from database\
-5.  Role-based redirect executed
+Roles:
 
-### Role-Based Access
-
-  Role           Capabilities
-  -------------- ----------------------------------------
-  ROLE_ADMIN     Manage doctors & patients
-  ROLE_DOCTOR    Manage appointments & prescribe
-  ROLE_PATIENT   Book appointments & view prescriptions
+-   ROLE_ADMIN
+-   ROLE_DOCTOR
+-   ROLE_PATIENT
 
 ------------------------------------------------------------------------
 
-# 🧩 Core Features
+# 📊 Features
 
 ## 👨‍💼 Admin
 
+-   Manage doctors
+-   Manage patients
 -   Dashboard analytics
--   Add professional doctors
--   Delete doctors
--   View & delete patients
--   System settings
+-   Secure role-restricted endpoints
 
 ## 👨‍⚕️ Doctor
 
--   View assigned appointments
--   Approve / reject appointments
+-   View appointments
+-   Approve/reject bookings
 -   Prescribe medications
--   View patient details
+-   View assigned patients
 
 ## 🧑 Patient
 
--   Secure registration
+-   Register securely
 -   Book appointments
--   View appointment history
 -   View prescriptions
 -   Manage profile
 
 ------------------------------------------------------------------------
 
-# 🗄️ Database Design (Professional Relational Model)
+# 🗄 Database Design
 
-### Users (Authentication Table)
+## Users Table
 
-    id (PK)
-    email (unique)
-    password (BCrypt)
-    role
+-   id (PK)
+-   email (unique)
+-   password (BCrypt encoded)
+-   role
 
-### Doctors
+## Doctors Table
 
-    id (PK)
-    name
-    specialization
-    contact
-    user_id (FK)
+-   id (PK)
+-   name
+-   specialization
+-   contact
+-   user_id (FK)
 
-### Patients
+## Patients Table
 
-    id (PK)
-    name
-    phone
-    medical_history
-    user_id (FK)
+-   id (PK)
+-   name
+-   phone
+-   medical_history
+-   user_id (FK)
 
-### Appointments
+## Appointments Table
 
-    id (PK)
-    appointment_time
-    status (ENUM)
-    notes
-    doctor_id (FK)
-    patient_id (FK)
+-   id (PK)
+-   appointment_time
+-   status (ENUM)
+-   doctor_id (FK)
+-   patient_id (FK)
 
-### Medications
+## Medications Table
 
-    id (PK)
-    name
-    dosage
-    frequency
-    prescribed_date
-    doctor_id (FK)
-    patient_id (FK)
-
-------------------------------------------------------------------------
-
-# 🖥️ UI Preview
-
-## 🏠 Homepage
-
-![Homepage](screenshots/homepage.png)
-
-## 🔐 Login
-
-![Login](screenshots/login-page.png)
-
-## 🧑 Registration
-
-![Registration](screenshots/registration.png)
-
-## 👨‍💼 Admin Dashboard
-
-![Admin Dashboard](screenshots/admin-dashboard.png)
-
-## 👨‍⚕️ Doctor Dashboard
-
-![Doctor Dashboard](screenshots/doctor-dashboard.png)
-
-## 🧑 Patient Dashboard
-
-![Patient Dashboard](screenshots/patient-dashboard.png)
-
-## 📅 Appointment Booking
-
-![Appointment Booking](screenshots/booking-appointment.png)
-
-## 💊 Prescriptions
-
-![Prescriptions](screenshots/prescriptions.png)
+-   id (PK)
+-   name
+-   dosage
+-   frequency
+-   prescribed_date
+-   doctor_id (FK)
+-   patient_id (FK)
 
 ------------------------------------------------------------------------
 
-# ⚙️ Tech Stack
+# 🛠 Tech Stack
 
-  Layer        Technology
-  ------------ -------------------
-  Backend      Spring Boot 3
-  Security     Spring Security
-  ORM          Hibernate / JPA
-  Database     PostgreSQL
-  Frontend     Thymeleaf
-  Styling      Bootstrap 5
-  Build Tool   Maven
-  Testing      JUnit 5 + Mockito
-
-------------------------------------------------------------------------
-
-# 🧪 Testing Strategy
-
-✔ Unit tests with Mockito\
-✔ Service layer validation tests\
-✔ Mocked repository interactions\
-✔ Context load verification
-
-Run tests:
-
-    ./mvnw test
+  Layer      Technology
+  ---------- -----------------
+  Backend    Spring Boot 3
+  Security   Spring Security
+  ORM        Hibernate / JPA
+  Database   PostgreSQL
+  Frontend   Thymeleaf
+  UI         Bootstrap 5
+  Build      Maven
+  Java       17
 
 ------------------------------------------------------------------------
 
-# 🐳 Deployment & DevOps
+# 🐳 Docker Support
 
-## Docker Support
+Build image:
 
-    docker build -t clinic-management-system .
-    docker run -p 8085:8085 clinic-management-system
+    docker build -t clinicos .
 
-## Production Ready Config
+Run container:
 
--   Externalized DB config
--   Environment variable support
--   Open-in-view disabled
--   SQL logging configurable
+    docker run -p 8085:8085 clinicos
 
 ------------------------------------------------------------------------
 
-# 📈 Project Strengths
+# 🧪 Running Tests
 
-✔ Clean architecture\
-✔ Enterprise RBAC security\
-✔ Professional UI\
-✔ Proper entity relationships\
-✔ Production-grade configuration\
-✔ Industry-aligned standards\
-✔ Resume-ready backend project
+    mvn test
+
+Includes: - Unit tests - Service layer tests - Mock repository testing
 
 ------------------------------------------------------------------------
 
-# 👨‍💻 Author
+# 🚀 Run Locally
 
-**Dinesh Chandra**\
+    mvn clean spring-boot:run
+
+Access:
+
+http://localhost:8085
+
+------------------------------------------------------------------------
+
+# 📦 Production Considerations
+
+-   Externalized configuration
+-   Environment-based DB setup
+-   Docker-compatible
+-   Stateless session management possible
+-   PostgreSQL production ready
+
+------------------------------------------------------------------------
+
+# 📌 Why This Project Stands Out
+
+-   Clean layered architecture
+-   Real-world RBAC implementation
+-   Secure authentication model
+-   Relational database mapping
+-   Enterprise-style structure
+-   Resume-level backend engineering
+-   YouTube demo ready
+
+------------------------------------------------------------------------
+
+# 📈 Future Enhancements
+
+-   JWT authentication
+-   Microservices version
+-   REST API documentation (Swagger)
+-   CI/CD pipeline
+-   Kubernetes deployment
+-   Caching layer (Redis)
+-   Email notifications
+
+------------------------------------------------------------------------
+
+# 👤 Author
+
+Dinesh Chandra\
 GitHub: https://github.com/TheComputationalCore\
 YouTube: https://www.youtube.com/@TheComputationalCore
 
 ------------------------------------------------------------------------
 
-# 📜 License
-
-MIT License
-
-------------------------------------------------------------------------
-
-```{=html}
-<p align="center">
-```
-Built with ❤️ using Spring Boot & Modern Java
-```{=html}
-</p>
-```
+# ⭐ If you found this project valuable, consider giving it a star.
