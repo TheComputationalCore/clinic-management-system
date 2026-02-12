@@ -13,7 +13,7 @@ automation.
 ## 🎥 System Walkthrough
 
 📺 **YouTube Demo:**
-https://youtube.com/YOUR_VIDEO_LINK_HERE
+https://youtube.com/
 
 The demo covers:
 
