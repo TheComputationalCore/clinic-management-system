@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: #f2f2f2; stroke: #333; stroke-width: 2; }
+    .text { font-family: Arial; font-size: 16px; text-anchor: middle; }
+    .title { font-size: 22px; font-weight: bold; }
+  </style>
+
+  <text x="400" y="40" class="title">Clinic Management System - Architecture</text>
+
+  <rect x="250" y="80" width="300" height="60" class="box"/>
+  <text x="400" y="115" class="text">Client (Browser)</text>
+
+  <line x1="400" y1="140" x2="400" y2="180" stroke="black" stroke-width="2"/>
+
+  <rect x="200" y="180" width="400" height="200" class="box"/>
+  <text x="400" y="210" class="text">Spring Boot Application</text>
+  <text x="400" y="240" class="text">- Controllers</text>
+  <text x="400" y="270" class="text">- Services</text>
+  <text x="400" y="300" class="text">- Repositories</text>
+  <text x="400" y="330" class="text">- Security (RBAC)</text>
+
+  <line x1="400" y1="380" x2="400" y2="420" stroke="black" stroke-width="2"/>
+
+  <rect x="250" y="420" width="300" height="80" class="box"/>
+  <text x="400" y="465" class="text">PostgreSQL Database</text>
+
+</svg>
