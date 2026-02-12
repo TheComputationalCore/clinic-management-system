@@ -1,280 +1,255 @@
-::: {align="center"}
 # 🏥 Clinic Management System
 
-### Production-Grade Role-Based Healthcare Workflow Platform
+**Production-Grade Role-Based Healthcare Workflow Platform**
 
 ![CI](https://github.com/TheComputationalCore/clinic-management-system/actions/workflows/ci.yml/badge.svg)
 ![CodeQL](https://github.com/TheComputationalCore/clinic-management-system/actions/workflows/codeql.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-:::
 
-------------------------------------------------------------------------
+---
 
-## 🎥 Full System Walkthrough
+## 🎥 Demo
 
-📺 **YouTube Demo:**\
-👉 https://youtube.com/YOUR_VIDEO_LINK_HERE
+YouTube Walkthrough:  
+https://youtube.com/YOUR_VIDEO_LINK_HERE
 
-------------------------------------------------------------------------
+The demo covers:
+
+- Architecture overview
+- Authentication & RBAC
+- Admin / Doctor / Patient workflows
+- Appointment lifecycle
+- Docker execution
+- CI/CD pipeline explanation
+
+---
 
 # 📌 Overview
 
-The **Clinic Management System (CMS)** is a production-oriented,
-multi-role healthcare management platform built with **Spring Boot,
-PostgreSQL, Docker, and CI/CD automation**.
+The Clinic Management System (CMS) is a multi-role healthcare management platform built using Spring Boot and PostgreSQL.
 
-It demonstrates:
+It follows a clean layered architecture and incorporates security, containerization, and CI/CD automation.
 
--   Clean layered architecture
--   Role-Based Access Control (RBAC)
--   Secure authentication (BCrypt)
--   Appointment lifecycle management
--   Prescription workflow
--   Containerized deployment
--   Continuous Integration & Security scanning
+This project demonstrates:
 
-This is engineered as a structured backend system --- not just a CRUD
-demo.
+- Role-Based Access Control (RBAC)
+- Secure authentication with BCrypt
+- Appointment lifecycle management
+- Prescription workflow
+- Dockerized deployment
+- Automated CI with security scanning
 
-------------------------------------------------------------------------
+---
 
 # 🏗 Architecture
 
-## 🔹 High-Level Architecture Diagram
+Place `architecture_diagram.svg` in the root of the repository.
 
-> Ensure `architecture_diagram.svg` is placed in the repository root.
+![Architecture Diagram](architecture_diagram.svg)
 
-```{=html}
-<p align="center">
-```
-<img src="./architecture_diagram.svg" alt="Architecture Diagram" width="700"/>`{=html}
-```{=html}
-</p>
-```
-### Architectural Style
+## Architectural Style
 
-Layered Monolith:
+Layered Monolith
 
 Client → Controller → Service → Repository → Database
 
-------------------------------------------------------------------------
+## Layer Responsibilities
+
+### Controller Layer
+- Handles HTTP requests
+- Performs validation
+- Returns Thymeleaf views
+
+### Service Layer
+- Contains business logic
+- Manages transactions
+- Enforces role rules
+
+### Repository Layer
+- JPA/Hibernate persistence
+- Database abstraction
+
+### Security Layer
+- Spring Security 6
+- Role-based endpoint authorization
+- CSRF protection
+- BCrypt password hashing
+
+---
 
 # 🗂 Entity Relationship Diagram (ERD)
 
-> Ensure `er_diagram.png` is placed in the repository root.
+Place `er_diagram.png` in the root of the repository.
 
-```{=html}
-<p align="center">
-```
-`<img src="./er_diagram.png" alt="ER Diagram" width="700"/>`{=html}
-```{=html}
-</p>
-```
-### Core Entities
+![ER Diagram](er_diagram.png)
 
--   User
--   Doctor
--   Patient
--   Appointment
--   Prescription
+## Core Entities
 
-### Relationships
+- User  
+- Doctor  
+- Patient  
+- Appointment  
+- Prescription  
 
--   One Doctor → Many Appointments\
--   One Patient → Many Appointments\
--   One Appointment → One Prescription
+## Relationships
 
-------------------------------------------------------------------------
+- One Doctor → Many Appointments  
+- One Patient → Many Appointments  
+- One Appointment → One Prescription  
 
-# 🖥 System Screenshots
+---
 
-> Ensure all screenshots are placed inside `/screenshots/` directory.
+# 🖥 Application Screenshots
 
-------------------------------------------------------------------------
+All screenshots must be stored in `/screenshots/`.
 
 ## 🔐 Authentication
 
-```{=html}
-<p align="center">
-```
-`<img src="./screenshots/login.png" width="600"/>`{=html} `<br/>`{=html}
-`<img src="./screenshots/register.png" width="600"/>`{=html}
-```{=html}
-</p>
-```
-
-------------------------------------------------------------------------
+![Login](screenshots/login.png)  
+![Register](screenshots/register.png)
 
 ## 🧑‍💼 Admin Dashboard
 
-```{=html}
-<p align="center">
-```
-`<img src="./screenshots/admin-dashboard.png" width="700"/>`{=html}
-```{=html}
-</p>
-```
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
 Capabilities:
-
--   Manage doctors
--   Manage patients
--   Administrative visibility
-
-------------------------------------------------------------------------
+- Manage doctors
+- Manage patients
+- System-level visibility
 
 ## ⚕️ Doctor Dashboard
 
-```{=html}
-<p align="center">
-```
-`<img src="./screenshots/doctor-dashboard.png" width="700"/>`{=html}
-```{=html}
-</p>
-```
+![Doctor Dashboard](screenshots/doctor-dashboard.png)
+
 Capabilities:
-
--   View appointments
--   Approve/reject bookings
--   Create prescriptions
-
-------------------------------------------------------------------------
+- View appointments
+- Approve or reject bookings
+- Create prescriptions
 
 ## 👤 Patient Dashboard
 
-```{=html}
-<p align="center">
-```
-`<img src="./screenshots/patient-dashboard.png" width="700"/>`{=html}
-```{=html}
-</p>
-```
+![Patient Dashboard](screenshots/patient-dashboard.png)
+
 Capabilities:
-
--   Book appointments
--   View status
--   Access prescriptions
-
-------------------------------------------------------------------------
+- Book appointments
+- View appointment status
+- Access prescriptions
 
 ## 📅 Appointment Workflow
 
-```{=html}
-<p align="center">
-```
-`<img src="./screenshots/appointments.png" width="700"/>`{=html}
-```{=html}
-</p>
-```
+![Appointments](screenshots/appointments.png)
+
 Workflow:
+1. Patient books appointment
+2. Doctor reviews and approves/rejects
+3. Prescription is optionally generated
 
-1.  Patient books appointment\
-2.  Doctor approves/rejects\
-3.  Prescription created if needed
-
-------------------------------------------------------------------------
+---
 
 # 🛠 Technology Stack
 
-  Layer                   Technology
-  ----------------------- -----------------
-  Language                Java 17
-  Framework               Spring Boot
-  Security                Spring Security
-  ORM                     Hibernate / JPA
-  Database                PostgreSQL
-  Frontend                Thymeleaf
-  Styling                 Bootstrap 5
-  Build Tool              Maven
-  Containerization        Docker
-  CI/CD                   GitHub Actions
-  Static Analysis         CodeQL
-  Dependency Monitoring   Dependabot
+| Category | Technology |
+|----------|------------|
+| Language | Java 17 |
+| Framework | Spring Boot |
+| Security | Spring Security |
+| ORM | Hibernate / JPA |
+| Database | PostgreSQL |
+| Frontend | Thymeleaf |
+| Styling | Bootstrap 5 |
+| Build Tool | Maven |
+| Containerization | Docker |
+| CI/CD | GitHub Actions |
+| Static Analysis | CodeQL |
+| Dependency Monitoring | Dependabot |
 
-------------------------------------------------------------------------
+---
 
-# 🐳 Docker (Production Ready)
-
-Multi-stage Docker build using Eclipse Temurin runtime.
+# 🐳 Docker Deployment
 
 ## Build
 
-``` bash
+```bash
 docker build -t clinic-management-system .
 ```
 
 ## Run
 
-``` bash
+```bash
 docker run -p 8085:8085 clinic-management-system
 ```
 
-Access:
+Application runs at:
 
-    http://localhost:8085
+http://localhost:8085
 
-------------------------------------------------------------------------
+---
 
 # 🔄 Continuous Integration
 
 On every push:
 
--   Application build
--   Unit testing
--   Docker validation
--   Static security scanning (CodeQL)
+- Project build validation
+- Unit test execution
+- Docker image build verification
+- Static security analysis via CodeQL
 
-------------------------------------------------------------------------
+---
 
 # 🔐 Security Design
 
--   BCrypt password hashing
--   Role-based endpoint authorization
--   CSRF protection
--   Secure session handling
--   Automated vulnerability scanning
+- BCrypt password hashing
+- Role-based endpoint restrictions
+- CSRF protection enabled
+- Secure session management
+- Automated vulnerability scanning
 
-------------------------------------------------------------------------
+---
 
 # 🧪 Testing
 
-``` bash
+```bash
 mvn test
 ```
 
--   Service-layer unit tests
--   Business rule validation
--   Mock-based isolation testing
+Includes:
 
-------------------------------------------------------------------------
+- Service-layer unit tests
+- Business rule validation
+- Repository mocking via Mockito
+
+---
 
 # 📁 Project Structure
 
-    clinic-management-system/
-    │
-    ├── .github/workflows/
-    │   ├── ci.yml
-    │   └── codeql.yml
-    │
-    ├── src/main/java/com/thecomputationalcore/cms/
-    │   ├── config/
-    │   ├── controller/
-    │   ├── service/
-    │   ├── repository/
-    │   ├── security/
-    │   └── model/
-    │
-    ├── src/main/resources/
-    │   ├── templates/
-    │   ├── static/
-    │   └── application.properties
-    │
-    ├── architecture_diagram.svg
-    ├── er_diagram.png
-    ├── screenshots/
-    ├── Dockerfile
-    └── pom.xml
+```
+clinic-management-system/
+│
+├── .github/workflows/
+│   ├── ci.yml
+│   └── codeql.yml
+│
+├── src/main/java/com/thecomputationalcore/cms/
+│   ├── config/
+│   ├── controller/
+│   ├── service/
+│   ├── repository/
+│   ├── security/
+│   └── model/
+│
+├── src/main/resources/
+│   ├── templates/
+│   ├── static/
+│   └── application.properties
+│
+├── architecture_diagram.svg
+├── er_diagram.png
+├── screenshots/
+├── Dockerfile
+└── pom.xml
+```
 
-------------------------------------------------------------------------
+---
 
 # 📈 Engineering Evolution
 
@@ -284,40 +259,41 @@ https://github.com/TheComputationalCore/patient-system
 
 Enhancements include:
 
--   Multi-role RBAC architecture
--   Admin dashboard
--   Appointment lifecycle
--   Dockerization
--   CI/CD automation
--   Security scanning
--   Structural refactoring
+- Multi-role RBAC architecture
+- Admin dashboard
+- Appointment lifecycle
+- Dockerization
+- CI/CD automation
+- Security scanning
+- Structural refactoring
 
-------------------------------------------------------------------------
+---
 
 # 🚀 Future Enhancements
 
--   REST API layer
--   Swagger/OpenAPI documentation
--   JWT authentication
--   Cloud deployment (AWS/GCP)
--   Observability & monitoring
--   Audit logging
+- REST API endpoints
+- Swagger/OpenAPI integration
+- JWT-based authentication
+- Cloud deployment (AWS/GCP)
+- Observability & monitoring
+- Audit logging
 
-------------------------------------------------------------------------
+---
 
 # 📜 License
 
 MIT License © 2025 TheComputationalCore
 
-------------------------------------------------------------------------
+---
 
-# 💼 For Recruiters
+# 💼 Recruiter Notes
 
 This project demonstrates:
 
--   Backend architectural clarity
--   Secure authentication design
--   Database modeling
--   DevOps discipline (CI/CD + Docker)
--   Clean Git evolution strategy
--   Production-conscious engineering approach
+- Structured backend architecture
+- Secure authentication implementation
+- Database relationship modeling
+- CI/CD automation
+- Containerization best practices
+- Clean Git evolution history
+- Production-conscious engineering approach
