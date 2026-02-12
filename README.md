@@ -177,8 +177,9 @@ docker run -p 8085:8085 clinic-management-system
 ```
 
 Application runs at:
-
+```bash
 http://localhost:8085
+```
 
 ---
 
@@ -252,8 +253,9 @@ clinic-management-system/
 
 This project evolved from:
 
+```bash
 https://github.com/TheComputationalCore/patient-system
-
+```
 Enhancements include:
 
 - Multi-role RBAC architecture
