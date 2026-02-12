@@ -94,7 +94,6 @@ Client → Controller → Service → Repository → Database
 ---
 
 # 🖥 Application Screenshots
-
 ## Login page
 
 ![Login](screenshots/login-page.png)  
@@ -176,7 +175,8 @@ docker build -t clinic-management-system .
 docker run -p 8085:8085 clinic-management-system
 ```
 
-Application runs at:
+## Application runs at:
+
 ```bash
 http://localhost:8085
 ```
