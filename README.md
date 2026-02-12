@@ -43,8 +43,6 @@ This project demonstrates:
 
 # 🏗 Architecture
 
-Place `architecture_diagram.svg` in the root of the repository.
-
 ![Architecture Diagram](architecture_diagram.svg)
 
 ## Architectural Style
@@ -78,8 +76,6 @@ Client → Controller → Service → Repository → Database
 ---
 
 # 🗂 Entity Relationship Diagram (ERD)
-
-Place `er_diagram.png` in the root of the repository.
 
 ![ER Diagram](er_diagram.png)
 
