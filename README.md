@@ -164,7 +164,9 @@ Workflow:
 
 ---
 
-# 🐳 Docker Deployment
+# 🐳 Running with Docker (Local Containerized Setup)
+
+The application is containerized using a multi-stage Docker build with Eclipse Temurin runtime.
 
 ## Build
 
