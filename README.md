@@ -101,8 +101,8 @@ All screenshots must be stored in `/screenshots/`.
 
 ## 🔐 Authentication
 
-![Login](screenshots/login.png)  
-![Register](screenshots/register.png)
+![Login](screenshots/login-page.png)  
+![Register](screenshots/registration.png)
 
 ## 🧑‍💼 Admin Dashboard
 
