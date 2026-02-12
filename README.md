@@ -95,9 +95,6 @@ Client → Controller → Service → Repository → Database
 
 # 🖥 Application Screenshots
 
-All screenshots must be stored in `/screenshots/`.
-
-## 🔐 Authentication
 ## Login page
 
 ![Login](screenshots/login-page.png)  
