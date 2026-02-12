@@ -134,20 +134,21 @@ Workflow: 1. Patient submits booking request
 
 # 🛠 Technology Stack
 
-  Category           Technology
+  Layer / Category   Technology
   ------------------ -------------------
   Language           Java 17
-  Framework          Spring Boot
+  Framework          Spring Boot 3
   Security           Spring Security 6
   ORM                Hibernate / JPA
   Database           PostgreSQL
-  Frontend           Thymeleaf
+  Template Engine    Thymeleaf
   Styling            Bootstrap 5
   Build Tool         Maven
   Containerization   Docker
   Orchestration      Docker Compose
   CI/CD              GitHub Actions
   Static Analysis    CodeQL
+  Version Control    Git
 
 ------------------------------------------------------------------------
 
