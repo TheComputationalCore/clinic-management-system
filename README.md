@@ -1,6 +1,6 @@
 # 🏥 Clinic Management System
 
-**Production-Grade Role-Based Healthcare Workflow Platform**\
+**Production-Grade Role-Based Healthcare Workflow Platform**
 Built with Spring Boot, PostgreSQL, Docker Compose, and CI/CD
 automation.
 
@@ -12,7 +12,7 @@ automation.
 
 ## 🎥 System Walkthrough
 
-📺 **YouTube Demo:**\
+📺 **YouTube Demo:**
 https://youtube.com/YOUR_VIDEO_LINK_HERE
 
 The demo covers:
