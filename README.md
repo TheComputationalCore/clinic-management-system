@@ -17,11 +17,11 @@ https://youtube.com/YOUR_VIDEO_LINK_HERE
 
 The demo covers:
 
--   Architectural design decisions\
--   Authentication & RBAC implementation\
--   Admin / Doctor / Patient workflows\
--   Appointment lifecycle\
--   Docker Compose orchestration\
+-   Architectural design decisions
+-   Authentication & RBAC implementation
+-   Admin / Doctor / Patient workflows
+-   Appointment lifecycle
+-   Docker Compose orchestration
 -   CI/CD pipeline overview
 
 ------------------------------------------------------------------------
@@ -77,16 +77,16 @@ authorization - CSRF protection - BCrypt password hashing
 
 ## Core Entities
 
--   User\
--   Doctor\
--   Patient\
--   Appointment\
+-   User
+-   Doctor
+-   Patient
+-   Appointment
 -   Prescription
 
 ### Relationship Summary
 
--   One Doctor → Many Appointments\
--   One Patient → Many Appointments\
+-   One Doctor → Many Appointments
+-   One Patient → Many Appointments
 -   One Appointment → One Prescription
 
 ------------------------------------------------------------------------
@@ -126,8 +126,8 @@ Access prescriptions
 
 ![Appointments](screenshots/booking-appointment.png)
 
-Workflow: 1. Patient submits booking request\
-2. Doctor reviews and approves/rejects\
+Workflow: 1. Patient submits booking request
+2. Doctor reviews and approves/rejects
 3. Prescription generated if applicable
 
 ------------------------------------------------------------------------
@@ -261,9 +261,9 @@ Includes:
 # 📈 Engineering Evolution
 
 Originally derived from:
-
+``` bash
 https://github.com/TheComputationalCore/patient-system
-
+```
 Major Enhancements:
 
 -   Multi-role RBAC system
