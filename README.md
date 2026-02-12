@@ -100,8 +100,12 @@ Client → Controller → Service → Repository → Database
 All screenshots must be stored in `/screenshots/`.
 
 ## 🔐 Authentication
+## Login page
 
 ![Login](screenshots/login-page.png)  
+
+## Patient Registration
+
 ![Register](screenshots/registration.png)
 
 ## 🧑‍💼 Admin Dashboard
@@ -133,7 +137,7 @@ Capabilities:
 
 ## 📅 Appointment Workflow
 
-![Appointments](screenshots/appointments.png)
+![Appointments](screenshots/booking-appointment.png)
 
 Workflow:
 1. Patient books appointment
