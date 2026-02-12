@@ -19,8 +19,7 @@ The demo covers:
 - Authentication & RBAC
 - Admin / Doctor / Patient workflows
 - Appointment lifecycle
-- Docker execution
-- CI/CD pipeline explanation
+  
 
 ---
 
