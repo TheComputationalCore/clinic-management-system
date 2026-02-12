@@ -35,7 +35,6 @@ This project demonstrates:
 - Secure authentication with BCrypt
 - Appointment lifecycle management
 - Prescription workflow
-- Dockerized deployment
 - Automated CI with security scanning
 
 ---
