@@ -47,7 +47,7 @@ demo.
 ```{=html}
 <p align="center">
 ```
-`<img src="./architecture_diagram.svg" alt="Architecture Diagram" width="700"/>`{=html}
+<img src="./architecture_diagram.svg" alt="Architecture Diagram" width="700"/>`{=html}
 ```{=html}
 </p>
 ```
