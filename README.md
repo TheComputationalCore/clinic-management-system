@@ -11,21 +11,6 @@ automation.
 
 ------------------------------------------------------------------------
 
-## 🎥 System Walkthrough
-
-📺 **YouTube Demo:**
-https://youtube.com/
-
-The demo covers:
-
--   Architectural design decisions
--   Authentication & RBAC implementation
--   Admin / Doctor / Patient workflows
--   Appointment lifecycle
--   Docker Compose orchestration
--   CI/CD pipeline overview
-
-------------------------------------------------------------------------
 
 # 📌 Executive Overview
 
